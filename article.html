@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Article — Bullet News</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+  <style>
+    .article-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .article-wrap img.cover {
+      width: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .article-category {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #888;
+    }
+    .article-wrap h1 {
+      margin: 8px 0 6px;
+      font-size: 30px;
+      line-height: 1.25;
+    }
+    .article-meta {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 24px;
+    }
+    .article-body {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #222;
+    }
+    .article-body img { max-width: 100%; border-radius: 6px; }
+    #status { text-align: center; padding: 60px; color: #888; }
+    .back-link { display: inline-block; margin-bottom: 16px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="article-wrap">
+    <a class="back-link" href="articles.html">&larr; Back to articles</a>
+    <div id="status">Loading article…</div>
+    <div id="article-content"></div>
+  </div>
+
+  <script>
+    // ==== CONFIGURE THESE TO MATCH YOUR REPO ====
+    const GITHUB_USER = "Abhiram5566";
+    const GITHUB_REPO = "bullet-news-global";
+    const GITHUB_BRANCH = "main";
+    const ARTICLES_PATH = "content/articles";
+    // =============================================
+
+    function getSlugFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("slug");
+    }
+
+    async function loadArticle() {
+      const statusEl = document.getElementById("status");
+      const contentEl = document.getElementById("article-content");
+      const slug = getSlugFromUrl();
+
+      if (!slug) {
+        statusEl.textContent = "No article specified.";
+        return;
+      }
+
+      const rawUrl = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${ARTICLES_PATH}/${slug}.json`;
+
+      try {
+        const res = await fetch(rawUrl);
+        if (!res.ok) throw new Error("Article not found (status " + res.status + ")");
+        const article = await res.json();
+
+        statusEl.style.display = "none";
+
+        const dateStr = article.date
+          ? new Date(article.date).toLocaleDateString()
+          : "";
+
+        const coverHtml = article.image
+          ? `<img class="cover" src="${article.image}" alt="${article.title || ''}">`
+          : "";
+
+        const bodyHtml = window.marked ? marked.parse(article.body || "") : (article.body || "");
+
+        contentEl.innerHTML = `
+          ${coverHtml}
+          <div class="article-category">${article.category || ""}</div>
+          <h1>${article.title || "Untitled"}</h1>
+          <div class="article-meta">${article.author || ""} ${dateStr ? "· " + dateStr : ""}</div>
+          <div class="article-body">${bodyHtml}</div>
+        `;
+
+        document.title = (article.title || "Article") + " — Bullet News";
+      } catch (err) {
+        statusEl.textContent = "Error loading article: " + err.message;
+        console.error(err);
+      }
+    }
+
+    loadArticle();
+  </script>
+</body>
+</html>
