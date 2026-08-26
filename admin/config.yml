@@ -1,0 +1,37 @@
+# ============================================================
+# REPLACE the line below with your real GitHub username/repo,
+# e.g. "Abhiram5566/-bullet-news-global"
+# ============================================================
+backend:
+  name: github
+  repo: Abhiram5566/-bullet-news-global
+  branch: main
+  base_url: https://api.netlify.com
+ 
+# This is the feature that gives you Draft -> In Review -> Ready -> Publish
+publish_mode: editorial_workflow
+ 
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+ 
+collections:
+  - name: "articles"
+    label: "Articles"
+    folder: "content/articles"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Global", "China", "Korea", "India", "Esports", "Drama"]
+      - { label: "Tags", name: "tags", widget: "list", default: [] }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Cover Image", name: "image", widget: "image", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "1-2 sentence summary shown on the homepage card" }
+      - { label: "Author", name: "author", widget: "string", default: "Bullet News Team" }
+      - { label: "Body", name: "body", widget: "markdown" }
+ 
