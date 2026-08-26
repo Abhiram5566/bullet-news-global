@@ -1,10 +1,10 @@
 # ============================================================
 # REPLACE the line below with your real GitHub username/repo,
-# e.g. "Abhiram5566/-bullet-news-global"
+# e.g. "Abhiram5566/bullet-news-global"
 # ============================================================
 backend:
   name: github
-  repo: Abhiram5566/-bullet-news-global
+  repo: Abhiram5566/bullet-news-global
   branch: main
   base_url: https://api.netlify.com
  
