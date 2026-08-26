@@ -9,7 +9,7 @@ backend:
   base_url: https://api.netlify.com
  
 # This is the feature that gives you Draft -> In Review -> Ready -> Publish
-publish_mode: editorial_workflow
+
  
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
