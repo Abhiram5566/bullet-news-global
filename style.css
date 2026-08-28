@@ -796,3 +796,23 @@ font-weight:bold;
 background:#a60000;
 
 }
+
+
+
+
+.article-body {
+    background: #f7f8fa;
+    color: #18202b;
+    border-radius: 18px;
+    padding: 40px;
+}
+
+.article-body p {
+    color: #303846;
+    line-height: 1.85;
+}
+
+.article-body h2,
+.article-body h3 {
+    color: #101722;
+}
