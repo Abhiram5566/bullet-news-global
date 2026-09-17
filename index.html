@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WC7DWHETE5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC7DWHETE5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-WC7DWHETE5');
-</script>
+    gtag('config', 'G-WC7DWHETE5');
+  </script>
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="Nw7m2DMcVfLZfkNgL2bp4Qki6PVyPjdzpbNcnJHNKCw" />
-  <meta name="description" content="Bullet News - Fast, Clear, Global. Real-time bullet updates on Global Tech, China, Korea, India, Esports, and Drama Hub.">
   <meta name="fo-verify" content="3bfee903-2465-4945-af26-44f84ba6a9b7" />
+  <meta name="description" content="Bullet News - Fast, Clear, Global. High-impact bullet journalism on Global Tech, China, Korea, India, Esports, and Drama Hub.">
   <title>Bullet News | Fast. Clear. Global.</title>
   
   <link rel="stylesheet" href="style.css">
@@ -26,10 +26,20 @@
 </head>
 <body>
 
-  <!-- HEADER NAVIGATION -->
+  <!-- 1. LIVE BREAKING FLASH TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-label">
+      <span class="pulse-dot"></span> LIVE FLASH
+    </div>
+    <div class="ticker-text" id="liveTickerText">
+      🔥 China pushes BRICS toward AI & economic cooperation • 🌍 Russia-Ukraine border developments monitored • 🛢️ Strait of Hormuz alerts raise global energy supply watch
+    </div>
+  </div>
+
+  <!-- 2. HEADER NAVIGATION -->
   <header>
     <div class="logo">
-      <a href="index.html" style="text-decoration:none; color:inherit;">📰 Bullet News</a>
+      <a href="index.html" style="text-decoration:none; color:inherit;">📰 BULLET<span class="accent">NEWS</span></a>
     </div>
 
     <nav>
@@ -43,43 +53,102 @@
     </nav>
   </header>
 
-  <!-- HERO HEADER -->
-  <div class="hero">
+  <!-- 3. HERO BANNER -->
+  <div class="hero-banner">
     <h1>Bullet News</h1>
-    <p class="tagline">Fast. Clear. Global.</p>
+    <p class="tagline">Fast • Clear • Global Wire</p>
   </div>
 
-  <!-- DYNAMIC NEWS FEED -->
-  <main id="main-content" style="max-width: 900px; margin: 0 auto; padding: 20px;">
-    
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; padding: 0 10px;">
-      <h2 style="font-size: 1.3rem; margin: 0; color: #222;">⚡ Latest Bullet Dispatches</h2>
-      <a href="articles.html" style="font-size: 0.9rem; color: #0066cc; text-decoration: underline;">View In-Depth Articles →</a>
-    </div>
+  <!-- 4. SIDE-BY-SIDE MAGAZINE LAYOUT -->
+  <div class="magazine-container">
 
-    <!-- Feed rendered by news-feed.js -->
-    <div id="news-feed-container">
-      <div style="text-align:center; padding: 40px; color:#888;">
-        Loading live bullet news dispatches...
+    <!-- LEFT COLUMN: DYNAMIC 2-COLUMN NEWS FEED -->
+    <main>
+      <div class="section-header">
+        <h2 class="section-title">⚡ Latest Bullet Dispatches</h2>
+        <a href="articles.html" class="read-more-link" style="font-size: 13px;">View In-Depth Articles →</a>
       </div>
-    </div>
 
-  </main>
+      <!-- Feed rendered dynamically by news-feed.js -->
+      <div class="news-grid" id="news-feed-container">
+        <div style="grid-column: 1 / -1; text-align:center; padding: 40px; color:#888;">
+          Loading live bullet dispatches...
+        </div>
+      </div>
+    </main>
 
-  <!-- FOOTER WITH EDITORIAL & TRUST LINKS -->
+    <!-- RIGHT COLUMN: SIDEBAR RADAR & WIDGETS -->
+    <aside class="sidebar">
+
+      <!-- TOP STORIES RADAR -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title">📈 Top Stories Radar</h3>
+        <ul class="trending-list">
+          <li class="trending-item">
+            <span class="trend-number">1</span>
+            <span class="trend-text">China proposes BRICS AI Open Source Zone and joint computing grids.</span>
+          </li>
+          <li class="trending-item">
+            <span class="trend-number">2</span>
+            <span class="trend-text">Xi and Modi hold bilateral talks at BRICS Summit to stabilize ties.</span>
+          </li>
+          <li class="trending-item">
+            <span class="trend-number">3</span>
+            <span class="trend-text">Strait of Hormuz vessel alerts trigger global oil supply risk assessments.</span>
+          </li>
+          <li class="trending-item">
+            <span class="trend-number">4</span>
+            <span class="trend-text">Russian strike near Polish border disrupts freight crossing.</span>
+          </li>
+          <li class="trending-item">
+            <span class="trend-number">5</span>
+            <span class="trend-text">Hyundai partners with Nvidia for next-generation autonomous driving.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- REGIONAL BEATS FILTER -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title">🌐 Regional Beats</h3>
+        <div class="category-pills">
+          <a href="china.html" class="pill">🇨🇳 China</a>
+          <a href="southkorea.html" class="pill">🇰🇷 Korea</a>
+          <a href="India.html" class="pill">🇮🇳 India</a>
+          <a href="esports.html" class="pill">🎮 Esports</a>
+          <a href="dramahub.html" class="pill">🎬 Drama Hub</a>
+          <a href="articles.html" class="pill">📰 Deep Dives</a>
+        </div>
+      </div>
+
+      <!-- 60-SECOND BRIEFING SIGNUP -->
+      <div class="sidebar-widget newsletter-box">
+        <h3 class="widget-title">✉️ The 60-Second Brief</h3>
+        <p style="font-size: 13px; color: var(--text-secondary, #9ca3af); margin-bottom: 8px;">
+          Get the top 5 global bullet stories delivered directly to your inbox every morning.
+        </p>
+        <input type="email" class="newsletter-input" placeholder="Enter your email..." />
+        <button class="newsletter-btn" onclick="alert('Thank you for subscribing to Bullet News!')">Subscribe Free</button>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- 5. FOOTER WITH RUDRA WORKS & EDITORIAL STANDARDS -->
   <footer>
-    <p>© 2026 Bullet News. All Rights Reserved.</p>
+    <p>© 2026 Bullet News Global • A Rudra Works Initiative. All Rights Reserved.</p>
     <p style="font-size: 0.85rem; margin-top: 6px; color: #777;">Fast • Clear • Global Wire Intelligence</p>
-    <div style="margin-top: 12px; font-size: 0.85rem;">
-      <a href="about.html" style="color: #666; margin: 0 10px;">About Us</a> •
-      <a href="admin/" style="color: #666; margin: 0 10px;">Editorial Login</a>
+    <div style="margin-top: 14px; font-size: 0.85rem;">
+      <a href="about.html">About & Editorial Standards</a> •
+      <a href="articles.html">In-Depth Articles</a> •
+      <a href="admin/">Editorial CMS Login</a>
     </div>
   </footer>
 
   <!-- NEWS FEED SCRIPT -->
   <script src="news-feed.js"></script>
   <script>
-    // Load all bullet news on the homepage
+    // Load all bullet news on homepage
     loadBulletNews("all");
   </script>
 
