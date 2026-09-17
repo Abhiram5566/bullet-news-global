@@ -816,3 +816,96 @@ background:#a60000;
 .article-body h3 {
     color: #101722;
 }
+
+/* ==========================================
+   BULLET NEWS GLOBAL — FINAL LAYOUT FIX
+   ========================================== */
+
+/* Homepage main layout */
+.magazine-container {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Keep homepage content column normal */
+.magazine-container main {
+    display: block;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Homepage news cards: 2 side-by-side */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* Individual homepage cards */
+.news-grid .news-card {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Sidebar */
+.magazine-container .sidebar {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* About page — single full-width column */
+.about-page {
+    display: block !important;
+    max-width: 1100px !important;
+    margin: 40px auto !important;
+    padding: 0 20px !important;
+}
+
+/* About page sections should use full available width */
+.about-page .about-section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* About identity box */
+.about-page .identity-box {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 900px) {
+
+    .magazine-container {
+        grid-template-columns: 1fr;
+    }
+
+    .magazine-container .sidebar {
+        position: static;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .magazine-container {
+        padding: 0 15px;
+    }
+
+    .news-grid .news-card {
+        width: 100%;
+    }
+}
