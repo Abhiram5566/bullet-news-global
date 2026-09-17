@@ -1,80 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Articles — Bullet News</title>
+  <meta name="google-site-verification" content="Nw7m2DMcVfLZfkNgL2bp4Qki6PVyPjdzpbNcnJHNKCw" />
+  <meta name="fo-verify" content="3bfee903-2465-4945-af26-44f84ba6a9b7" />
+  <title>Articles & In-Depth Journalism — Bullet News</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC7DWHETE5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WC7DWHETE5');
+  </script>
+
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
+    .articles-container {
+      max-width: 1200px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
     .articles-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 24px;
-      padding: 24px;
-      max-width: 1200px;
-      margin: 0 auto;
+      margin-top: 24px;
     }
     .article-card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
+      background: var(--bg-card, #161f30);
+      border: 1px solid var(--border-color, #243046);
+      border-radius: 10px;
       overflow: hidden;
       text-decoration: none;
       color: inherit;
-      display: block;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      background: #fff;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
     .article-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+      transform: translateY(-4px);
+      border-color: var(--accent-blue, #38bdf8);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
     .article-card img {
       width: 100%;
-      height: 160px;
+      height: 180px;
       object-fit: cover;
       display: block;
-      background: #eee;
+      background: #1e293b;
     }
-    .article-card-body { padding: 14px; }
+    .article-card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
     .article-card-category {
       font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #888;
-      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+      color: var(--accent-blue, #38bdf8);
+      margin-bottom: 8px;
     }
     .article-card h3 {
-      margin: 0 0 8px;
-      font-size: 17px;
-      line-height: 1.3;
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #ffffff;
+      font-weight: 700;
     }
     .article-card p {
-      margin: 0;
-      font-size: 14px;
-      color: #555;
-      line-height: 1.4;
+      margin: 0 0 14px;
+      font-size: 13.5px;
+      color: var(--text-secondary, #9ca3af);
+      line-height: 1.5;
+      flex-grow: 1;
     }
     .article-card .meta {
-      margin-top: 10px;
       font-size: 12px;
-      color: #999;
+      color: var(--text-muted, #6b7280);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
     }
-    #status { text-align: center; padding: 40px; color: #888; }
+    #status { text-align: center; padding: 60px 20px; color: #9ca3af; font-size: 15px; }
   </style>
 </head>
 <body>
 
-  <h1 style="text-align:center; margin-top:32px;">Latest Articles</h1>
-  <div id="status">Loading articles…</div>
-  <div class="articles-grid" id="articles-grid"></div>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <a href="index.html" style="text-decoration:none; color:inherit;">📰 BULLET<span class="accent">NEWS</span></a>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="china.html">China</a>
+      <a href="southkorea.html">Korea</a>
+      <a href="India.html">India</a>
+      <a href="esports.html">Esports</a>
+      <a href="dramahub.html">Drama Hub</a>
+      <a href="articles.html" class="active">Articles</a>
+    </nav>
+  </header>
+
+  <!-- HERO BANNER -->
+  <div class="hero-banner">
+    <h1>In-Depth Articles & Analyses</h1>
+    <p class="tagline">Comprehensive Long-Form Journalism by Bullet News Global</p>
+  </div>
+
+  <!-- MAIN ARTICLES GRID -->
+  <div class="articles-container">
+    <div id="status">Loading articles…</div>
+    <div class="articles-grid" id="articles-grid"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Bullet News Global • A Rudra Works Initiative. All Rights Reserved.</p>
+    <div style="margin-top: 14px;">
+      <a href="index.html">Home</a> •
+      <a href="about.html">About & Editorial</a> •
+      <a href="articles.html">Articles</a> •
+      <a href="admin/">CMS Login</a>
+    </div>
+  </footer>
 
   <script>
-    // ==== CONFIGURE THESE TO MATCH YOUR REPO ====
+    // ==== REPO CONFIGURATION ====
     const GITHUB_USER = "Abhiram5566";
     const GITHUB_REPO = "bullet-news-global";
     const GITHUB_BRANCH = "main";
     const ARTICLES_PATH = "content/articles";
-    // =============================================
+    // ============================
 
     const apiListUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${ARTICLES_PATH}?ref=${GITHUB_BRANCH}`;
 
@@ -96,38 +165,45 @@
 
         const articles = await Promise.all(
           jsonFiles.map(async (file) => {
-            const res = await fetch(file.download_url);
-            const data = await res.json();
-            data.__slug = file.name.replace(/\.json$/, "");
-            return data;
+            try {
+              const res = await fetch(file.download_url);
+              const data = await res.json();
+              data.__slug = file.name.replace(/\.json$/, "");
+              return data;
+            } catch(e) { return null; }
           })
         );
 
-        // Newest first
-        articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+        // Sort newest first
+        const validArticles = articles
+          .filter(a => a !== null)
+          .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
 
         statusEl.style.display = "none";
 
-        articles.forEach((article) => {
+        validArticles.forEach((article) => {
           const card = document.createElement("a");
           card.className = "article-card";
           card.href = `article.html?slug=${encodeURIComponent(article.__slug)}`;
 
           const imgHtml = article.image
             ? `<img src="${article.image}" alt="${article.title || ''}">`
-            : `<img src="images/placeholder.jpg" alt="">`;
+            : `<div style="height:180px; background:#1e293b; display:flex; align-items:center; justify-content:center; color:#888;">📰 Bullet News</div>`;
 
           const dateStr = article.date
-            ? new Date(article.date).toLocaleDateString()
+            ? new Date(article.date).toLocaleDateString("en-US", { month: 'short', day: 'numeric', year: 'numeric' })
             : "";
 
           card.innerHTML = `
             ${imgHtml}
             <div class="article-card-body">
-              <div class="article-card-category">${article.category || ""}</div>
+              <div class="article-card-category">${article.category || "ANALYSIS"}</div>
               <h3>${article.title || "Untitled"}</h3>
               <p>${article.excerpt || ""}</p>
-              <div class="meta">${article.author || ""} ${dateStr ? "· " + dateStr : ""}</div>
+              <div class="meta">
+                <span>By ${article.author || "Staff"}</span>
+                <span>${dateStr}</span>
+              </div>
             </div>
           `;
           grid.appendChild(card);
