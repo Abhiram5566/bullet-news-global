@@ -1,111 +1,825 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
 
-  <!-- Google tag (gtag.js) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google / Search -->
+  <meta name="google-site-verification"
+        content="Nw7m2DMcVfLZfkNgL2bp4Qki6PVyPjdzpbNcnJHNKCw">
+
+  <meta name="fo-verify"
+        content="3bfee903-2465-4945-af26-44f84ba6a9b7">
+
+  <meta
+    name="description"
+    content="Bullet News Global — Fast, clear news and information covering global affairs, India, China, Korea, technology, esports and entertainment."
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical"
+        href="https://bulletnewsglobal.netlify.app/">
+
+  <title>Bullet News Global | Fast. Clear. Global.</title>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WC7DWHETE5"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
     gtag('config', 'G-WC7DWHETE5');
   </script>
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="Nw7m2DMcVfLZfkNgL2bp4Qki6PVyPjdzpbNcnJHNKCw" />
-  <meta name="fo-verify" content="3bfee903-2465-4945-af26-44f84ba6a9b7" />
-  <meta name="description" content="Bullet News - Fast, Clear, Global. High-impact bullet journalism on Global Tech, China, Korea, India, Esports, and Drama Hub.">
-  <title>Bullet News | Fast. Clear. Global.</title>
-  
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- ORGANIZATION / WEBSITE STRUCTURED DATA -->
+  <script type="application/ld+json">
+
+  {
+    "@context": "https://schema.org",
+
+    "@graph": [
+
+      {
+        "@type": "NewsMediaOrganization",
+        "@id": "https://bulletnewsglobal.netlify.app/#organization",
+
+        "name": "Bullet News Global",
+
+        "url": "https://bulletnewsglobal.netlify.app/",
+
+        "description": "A digital news and information platform covering global affairs, India, China, Korea, technology, esports and entertainment.",
+
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Rudra Works"
+        }
+      },
+
+      {
+        "@type": "WebSite",
+        "@id": "https://bulletnewsglobal.netlify.app/#website",
+
+        "url": "https://bulletnewsglobal.netlify.app/",
+
+        "name": "Bullet News Global",
+
+        "publisher": {
+          "@id": "https://bulletnewsglobal.netlify.app/#organization"
+        }
+      }
+
+    ]
+  }
+
+  </script>
+
+  <!-- PAGE-SPECIFIC LAYOUT FIX -->
+  <style>
+
+    /*
+      HOME PAGE LAYOUT
+
+      Desktop:
+      LEFT  = Latest News
+      RIGHT = Radar / Categories / Newsletter
+
+      Mobile:
+      Everything becomes one column.
+    */
+
+    .magazine-container {
+      max-width: 1400px;
+      margin: 35px auto;
+      padding: 0 25px;
+
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+
+      gap: 30px;
+
+      align-items: start;
+    }
+
+
+    /* Important:
+       The global stylesheet currently applies grid
+       styling to <main>. We override it here.
+    */
+
+    .magazine-container main {
+      max-width: none;
+      margin: 0;
+      padding: 0;
+
+      display: block;
+
+      min-width: 0;
+    }
+
+
+    .section-header {
+      margin-bottom: 20px;
+    }
+
+
+    .section-title {
+      color: #ffffff;
+      margin: 0 0 10px;
+      font-size: 25px;
+    }
+
+
+    .read-more-link {
+      color: #58a6ff;
+      text-decoration: underline;
+    }
+
+
+    /* NEWS GRID */
+
+    .news-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 20px;
+
+      align-items: start;
+    }
+
+
+    .news-grid .news-card {
+      width: auto;
+      max-width: none;
+      margin: 0;
+
+      box-sizing: border-box;
+    }
+
+
+    /* SIDEBAR */
+
+    .sidebar {
+      width: 100%;
+      box-sizing: border-box;
+      position: sticky;
+      top: 90px;
+    }
+
+
+    .sidebar-widget {
+      background: #161b22;
+
+      border: 1px solid #30363d;
+
+      border-radius: 12px;
+
+      padding: 20px;
+
+      margin-bottom: 20px;
+    }
+
+
+    .widget-title {
+      color: #ffffff;
+
+      margin-top: 0;
+
+      margin-bottom: 15px;
+
+      font-size: 18px;
+    }
+
+
+    /* TRENDING */
+
+    .trending-list {
+      list-style: none;
+
+      padding: 0;
+      margin: 0;
+    }
+
+
+    .trending-item {
+      display: flex;
+
+      gap: 12px;
+
+      padding: 12px 0;
+
+      border-bottom: 1px solid #30363d;
+    }
+
+
+    .trending-item:last-child {
+      border-bottom: none;
+    }
+
+
+    .trend-number {
+      flex: 0 0 28px;
+
+      width: 28px;
+      height: 28px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: #21262d;
+
+      color: #58a6ff;
+
+      font-weight: 800;
+    }
+
+
+    .trend-text {
+      color: #c9d1d9;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+    }
+
+
+    /* CATEGORY PILLS */
+
+    .category-pills {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+    }
+
+
+    .pill {
+      display: inline-block;
+
+      padding: 9px 12px;
+
+      border-radius: 20px;
+
+      background: #21262d;
+
+      border: 1px solid #30363d;
+
+      color: #c9d1d9;
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      transition: 0.2s ease;
+    }
+
+
+    .pill:hover {
+      border-color: #58a6ff;
+
+      color: #58a6ff;
+
+      transform: translateY(-2px);
+    }
+
+
+    /* NEWSLETTER */
+
+    .newsletter-input {
+      width: 100%;
+
+      box-sizing: border-box;
+
+      padding: 11px;
+
+      border-radius: 7px;
+
+      border: 1px solid #30363d;
+
+      background: #0d1117;
+
+      color: #ffffff;
+
+      margin-bottom: 10px;
+    }
+
+
+    .newsletter-btn {
+      width: 100%;
+
+      padding: 11px;
+
+      border: none;
+
+      border-radius: 7px;
+
+      background: #f97316;
+
+      color: #ffffff;
+
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+
+    .newsletter-btn:hover {
+      background: #ea580c;
+    }
+
+
+    /* HERO */
+
+    .hero-banner {
+      max-width: 1400px;
+
+      margin: 0 auto;
+
+      padding: 45px 25px 20px;
+
+      box-sizing: border-box;
+    }
+
+
+    .hero-banner h1 {
+      margin: 0 0 8px;
+
+      color: #ffffff;
+
+      font-size: 42px;
+
+      font-weight: 800;
+    }
+
+
+    .hero-banner .tagline {
+      margin: 0;
+
+      color: #f97316;
+
+      font-size: 19px;
+
+      font-weight: 700;
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+
+      .magazine-container {
+        grid-template-columns: 1fr;
+
+        padding: 0 18px;
+
+        margin-top: 25px;
+      }
+
+
+      .sidebar {
+        position: static;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      .hero-banner {
+        padding: 30px 18px 15px;
+      }
+
+
+      .hero-banner h1 {
+        font-size: 34px;
+      }
+
+
+      .hero-banner .tagline {
+        font-size: 17px;
+      }
+
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .section-title {
+        font-size: 22px;
+      }
+
+
+      .sidebar-widget {
+        padding: 18px;
+      }
+
+    }
+
+  </style>
+
 </head>
+
+
 <body>
 
- 
+  <!-- LIVE FLASH -->
 
-  <!-- 2. HEADER NAVIGATION -->
-  <header>
-    <div class="logo">
-      <a href="index.html" style="text-decoration:none; color:inherit;">📰 BULLET<span class="accent">NEWS</span></a>
+  <div class="ticker-bar">
+
+    <div class="ticker-label">
+      <span class="pulse-dot"></span>
+      LIVE FLASH
     </div>
 
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="china.html">China</a>
-      <a href="southkorea.html">Korea</a>
-      <a href="India.html">India</a>
-      <a href="esports.html">Esports</a>
-      <a href="dramahub.html">Drama Hub</a>
-      <a href="articles.html">Articles</a>
-    </nav>
-  </header>
+    <div
+      class="ticker-text"
+      id="liveTickerText"
+    >
+      🔥 China pushes BRICS toward AI & economic cooperation •
+      🌍 Global developments monitored •
+      🛢️ Global energy supply watch
+    </div>
 
-  <!-- 3. HERO BANNER -->
-  <div class="hero-banner">
-    <h1>Bullet News</h1>
-    <p class="tagline">Fast • Clear • Global Wire</p>
   </div>
 
-  <!-- 4. SIDE-BY-SIDE MAGAZINE LAYOUT -->
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">
+
+      <a
+        href="index.html"
+        style="text-decoration:none; color:inherit;"
+      >
+        📰 BULLET<span class="accent">NEWS</span>
+      </a>
+
+    </div>
+
+
+    <nav>
+
+      <a href="index.html" class="active">
+        Home
+      </a>
+
+      <a href="china.html">
+        China
+      </a>
+
+      <a href="southkorea.html">
+        Korea
+      </a>
+
+      <a href="India.html">
+        India
+      </a>
+
+      <a href="esports.html">
+        Esports
+      </a>
+
+      <a href="dramahub.html">
+        Drama Hub
+      </a>
+
+      <a href="articles.html">
+        Articles
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero-banner">
+
+    <h1>
+      Bullet News Global
+    </h1>
+
+    <p class="tagline">
+      Fast • Clear • Global
+    </p>
+
+  </section>
+
+
+  <!-- MAGAZINE LAYOUT -->
+
   <div class="magazine-container">
 
-    <!-- LEFT COLUMN: DYNAMIC 2-COLUMN NEWS FEED -->
+
+    <!-- LEFT: NEWS -->
+
     <main>
+
       <div class="section-header">
-        <h2 class="section-title">⚡ Latest Bullet Dispatches</h2>
-        <a href="articles.html" class="read-more-link" style="font-size: 13px;">View In-Depth Articles →</a>
+
+        <h2 class="section-title">
+          ⚡ Latest Bullet Dispatches
+        </h2>
+
+        <a
+          href="articles.html"
+          class="read-more-link"
+          style="font-size:13px;"
+        >
+          View In-Depth Articles →
+        </a>
+
       </div>
 
-      <!-- Feed rendered dynamically by news-feed.js -->
-      <div class="news-grid" id="news-feed-container">
-        <div style="grid-column: 1 / -1; text-align:center; padding: 40px; color:#888;">
+
+      <!-- Dynamic feed -->
+
+      <div
+        class="news-grid"
+        id="news-feed-container"
+      >
+
+        <div
+          style="
+            grid-column:1/-1;
+            text-align:center;
+            padding:40px;
+            color:#888;
+          "
+        >
           Loading live bullet dispatches...
         </div>
+
       </div>
+
     </main>
 
-    <!-- RIGHT COLUMN: SIDEBAR RADAR & WIDGETS -->
+
+    <!-- RIGHT: SIDEBAR -->
+
     <aside class="sidebar">
 
-     
 
-      
-      <!-- 60-SECOND BRIEFING SIGNUP -->
+      <!-- TOP STORIES -->
+
+      <div class="sidebar-widget">
+
+        <h3 class="widget-title">
+          📈 Top Stories Radar
+        </h3>
+
+
+        <ul class="trending-list">
+
+          <li class="trending-item">
+
+            <span class="trend-number">
+              1
+            </span>
+
+            <span class="trend-text">
+              China proposes BRICS AI Open Source Zone and joint computing grids.
+            </span>
+
+          </li>
+
+
+          <li class="trending-item">
+
+            <span class="trend-number">
+              2
+            </span>
+
+            <span class="trend-text">
+              Xi and Modi hold bilateral talks at BRICS Summit to stabilize ties.
+            </span>
+
+          </li>
+
+
+          <li class="trending-item">
+
+            <span class="trend-number">
+              3
+            </span>
+
+            <span class="trend-text">
+              Strait of Hormuz vessel alerts trigger global oil supply risk assessments.
+            </span>
+
+          </li>
+
+
+          <li class="trending-item">
+
+            <span class="trend-number">
+              4
+            </span>
+
+            <span class="trend-text">
+              Russian strike near Polish border disrupts freight crossing.
+            </span>
+
+          </li>
+
+
+          <li class="trending-item">
+
+            <span class="trend-number">
+              5
+            </span>
+
+            <span class="trend-text">
+              Hyundai partners with Nvidia for next-generation autonomous driving.
+            </span>
+
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- REGIONAL BEATS -->
+
+      <div class="sidebar-widget">
+
+        <h3 class="widget-title">
+          🌐 Regional Beats
+        </h3>
+
+
+        <div class="category-pills">
+
+          <a href="china.html" class="pill">
+            🇨🇳 China
+          </a>
+
+          <a href="southkorea.html" class="pill">
+            🇰🇷 Korea
+          </a>
+
+          <a href="India.html" class="pill">
+            🇮🇳 India
+          </a>
+
+          <a href="esports.html" class="pill">
+            🎮 Esports
+          </a>
+
+          <a href="dramahub.html" class="pill">
+            🎬 Drama Hub
+          </a>
+
+          <a href="articles.html" class="pill">
+            📰 Deep Dives
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- NEWSLETTER -->
+
       <div class="sidebar-widget newsletter-box">
-        <h3 class="widget-title">✉️ The 60-Second Brief</h3>
-        <p style="font-size: 13px; color: var(--text-secondary, #9ca3af); margin-bottom: 8px;">
+
+        <h3 class="widget-title">
+          ✉️ The 60-Second Brief
+        </h3>
+
+
+        <p
+          style="
+            font-size:13px;
+            color:#9ca3af;
+            margin-bottom:8px;
+          "
+        >
           Get the top 5 global bullet stories delivered directly to your inbox every morning.
         </p>
-        <input type="email" class="newsletter-input" placeholder="Enter your email..." />
-        <button class="newsletter-btn" onclick="alert('Thank you for subscribing to Bullet News!')">Subscribe Free</button>
+
+
+        <input
+          type="email"
+          class="newsletter-input"
+          placeholder="Enter your email..."
+        >
+
+
+        <button
+          class="newsletter-btn"
+          onclick="alert('Thank you for subscribing to Bullet News!')"
+        >
+          Subscribe Free
+        </button>
+
       </div>
+
 
     </aside>
 
   </div>
 
-  <!-- 5. FOOTER WITH RUDRA WORKS & EDITORIAL STANDARDS -->
+
+  <!-- FOOTER -->
+
   <footer>
-    <p>© 2026 Bullet News Global • A Rudra Works Initiative. All Rights Reserved.</p>
-    <p style="font-size: 0.85rem; margin-top: 6px; color: #777;">Fast • Clear • Global Wire Intelligence</p>
-    <div style="margin-top: 14px; font-size: 0.85rem;">
-      <a href="about.html">About & Editorial Standards</a> •
-      <a href="articles.html">In-Depth Articles</a> •
-      <a href="admin/">Editorial CMS Login</a>
+
+    <p>
+      © 2026 Bullet News Global •
+      A Rudra Works Initiative.
+      All Rights Reserved.
+    </p>
+
+
+    <p
+      style="
+        font-size:0.85rem;
+        margin-top:6px;
+        color:#777;
+      "
+    >
+      Fast • Clear • Global Wire Intelligence
+    </p>
+
+
+    <div
+      style="
+        margin-top:14px;
+        font-size:0.85rem;
+      "
+    >
+
+      <a href="about.html">
+        About & Editorial Standards
+      </a>
+
+      •
+
+      <a href="articles.html">
+        In-Depth Articles
+      </a>
+
+      •
+
+      <a href="admin/">
+        Editorial CMS Login
+      </a>
+
     </div>
+
   </footer>
 
-  <!-- NEWS FEED SCRIPT -->
+
+  <!-- NEWS FEED -->
+
   <script src="news-feed.js"></script>
+
   <script>
-    // Load all bullet news on homepage
     loadBulletNews("all");
   </script>
 
 </body>
+
 </html>
