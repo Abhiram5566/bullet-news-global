@@ -1,3 +1,5 @@
+publish_mode: editorial_workflow
+
 backend:
   name: github
   repo: Abhiram5566/bullet-news-global
@@ -53,3 +55,113 @@ collections:
       - { label: "Excerpt", name: "excerpt", widget: "text", hint: "1-2 sentence summary shown on the card" }
       - { label: "Author", name: "author", widget: "string", default: "Bullet News Team" }
       - { label: "Body", name: "body", widget: "markdown" }
+
+
+  # INDIA DESK — CMS-managed topic cards
+  - name: "india_sections"
+    label: "🇮🇳 India Desk Sections"
+    folder: "content/india-sections"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Section Title", name: "title", widget: "string" }
+      - { label: "Icon", name: "icon", widget: "string", default: "🇮🇳" }
+      - { label: "Description", name: "summary", widget: "text" }
+      - { label: "Display Order", name: "order", widget: "number", default: 10 }
+      - { label: "Publish on India Page", name: "published", widget: "boolean", default: true }
+
+
+  # ==========================================
+  # 3. DRAMA HUB — CMS-managed drama listings
+  # ==========================================
+  - name: "dramas"
+    label: "🎭 Drama Hub"
+    folder: "content/dramas"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Drama Title", name: "title", widget: "string" }
+      - { label: "Country / Industry", name: "country", widget: "select", options: ["China", "Korea", "Other"], default: "China" }
+      - { label: "Status", name: "status", widget: "select", options: ["Upcoming", "Airing", "Completed", "Review"], default: "Upcoming" }
+      - { label: "Poster", name: "image", widget: "image", required: false }
+      - { label: "Cast", name: "cast", widget: "string", required: false }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Official / Reference Link", name: "link", widget: "string", required: false }
+      - { label: "Updated Date", name: "date", widget: "datetime" }
+      - { label: "Feature on Drama Hub", name: "featured", widget: "boolean", default: true }
+
+  # ==========================================
+  # 4. ESPORTS — CMS-managed coverage
+  # ==========================================
+  - name: "esports"
+    label: "🎮 Esports Desk"
+    folder: "content/esports"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Headline", name: "title", widget: "string" }
+      - { label: "Game", name: "game", widget: "string", required: false }
+      - { label: "Category", name: "category", widget: "select", options: ["Tournament", "Team", "Player", "Mobile Esports", "Industry", "Opinion"] }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Cover Image", name: "image", widget: "image", required: false }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+      - { label: "Source / Reference URL", name: "source", widget: "string", required: false }
+      - { label: "Feature on Esports Page", name: "featured", widget: "boolean", default: true }
+
+  # ==========================================
+  # 5. EDITORIAL DEPARTMENT — team / roles
+  # ==========================================
+  - name: "editorial_team"
+    label: "🧭 Editorial Department"
+    folder: "content/editorial"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name or Public Byline", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Public Bio", name: "bio", widget: "text", required: false }
+      - { label: "Public Contact Email", name: "email", widget: "string", required: false }
+      - { label: "Display Order", name: "order", widget: "number", default: 10 }
+      - { label: "Show on Editorial Page", name: "published", widget: "boolean", default: false }
+
+  # ==========================================
+  # 6. SITE PAGE COPY — editable headings and intro text
+  # ==========================================
+  - name: "page_copy"
+    label: "🧩 Page Copy & Settings"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "content/pages/home.json"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false }
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+      - label: "Drama Hub Page"
+        name: "drama_hub"
+        file: "content/pages/drama-hub.json"
+        fields:
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+      - label: "Esports Page"
+        name: "esports_page"
+        file: "content/pages/esports.json"
+        fields:
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+      - label: "Editorial Department Page"
+        name: "editorial_page"
+        file: "content/pages/editorial.json"
+        fields:
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Editorial Standards", name: "standards", widget: "markdown" }
