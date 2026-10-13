@@ -695,39 +695,104 @@
 
       <!-- NEWSLETTER -->
 
-      <div class="sidebar-widget newsletter-box">
+      
+<p style="font-size:13px;color:#9ca3af;margin-bottom:8px;">
+  Join the signup list for BNG's planned daily top-five global news briefing.
+  Newsletter emails will begin once delivery is configured.
+</p>
 
-        <h3 class="widget-title">
-          ✉️ The 60-Second Brief
-        </h3>
+<form
+  name="newsletter-subscribers"
+  id="newsletter-form"
+  method="POST"
+  data-netlify="true"
+  action="/"
+>
+  <input
+    type="hidden"
+    name="form-name"
+    value="newsletter-subscribers"
+  >
 
+  <label for="newsletter-email"
+         style="display:block;font-size:13px;margin-bottom:8px;">
+    Email address
+  </label>
 
-        <p
-          style="
-            font-size:13px;
-            color:#9ca3af;
-            margin-bottom:8px;
-          "
-        >
-          Get the top 5 global bullet stories delivered directly to your inbox every morning.
-        </p>
+  <input
+    id="newsletter-email"
+    type="email"
+    name="email"
+    class="newsletter-input"
+    placeholder="Enter your email..."
+    autocomplete="email"
+    maxlength="254"
+    required
+  >
 
+  <label style="display:flex;gap:8px;align-items:flex-start;
+                font-size:12px;line-height:1.5;margin:8px 0 12px;">
+    <input
+      type="checkbox"
+      name="newsletter_consent"
+      value="yes"
+      required
+      style="width:auto;flex-shrink:0;margin-top:3px;"
+    >
+    I agree to receive newsletter updates and the planned BNG briefing
+    at this email address.
+  </label>
 
-        <input
-          type="email"
-          class="newsletter-input"
-          placeholder="Enter your email..."
-        >
+  <button type="submit" class="newsletter-btn">
+    Join the Newsletter List
+  </button>
+</form>
 
+<p id="newsletter-status"
+   role="status"
+   aria-live="polite"
+   style="font-size:13px;line-height:1.5;">
+</p>
 
-        <button
-          class="newsletter-btn"
-          onclick="alert('Thank you for subscribing to Bullet News!')"
-        >
-          Subscribe Free
-        </button>
+<script>
+(function () {
+  const form = document.getElementById("newsletter-form");
+  const status = document.getElementById("newsletter-status");
 
-      </div>
+  if (!form || !status) return;
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+    button.textContent = "Submitting...";
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
+      form.hidden = true;
+      status.textContent =
+        "Thanks! Your newsletter signup has been recorded.";
+    } catch (error) {
+      status.textContent =
+        "Sorry, your signup could not be submitted. Please try again.";
+      button.disabled = false;
+      button.textContent = "Join the Newsletter List";
+    }
+  });
+})();
+</script>
 
 
     </aside>
