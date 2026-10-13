@@ -21,7 +21,7 @@
   <meta name="robots" content="index, follow">
 
   <link rel="canonical"
-        href="https://bulletnewsglobal.netlify.app/">
+        href="https://bulletnewsglobal.in/">
 
   <title>Bullet News Global | Fast. Clear. Global.</title>
 
@@ -65,11 +65,11 @@
 
       {
         "@type": "NewsMediaOrganization",
-        "@id": "https://bulletnewsglobal.netlify.app/#organization",
+        "@id": "https://bulletnewsglobal.in/#organization",
 
         "name": "Bullet News Global",
 
-        "url": "https://bulletnewsglobal.netlify.app/",
+        "url": "https://bulletnewsglobal.in/",
 
         "description": "A digital news and information platform covering global affairs, India, China, Korea, technology, esports and entertainment.",
 
@@ -81,19 +81,22 @@
 
       {
         "@type": "WebSite",
-        "@id": "https://bulletnewsglobal.netlify.app/#website",
+        "@id": "https://bulletnewsglobal.in/#website",
 
-        "url": "https://bulletnewsglobal.netlify.app/",
+        "url": "https://bulletnewsglobal.in/",
 
         "name": "Bullet News Global",
 
         "publisher": {
-          "@id": "https://bulletnewsglobal.netlify.app/#organization"
+          "@id": "https://bulletnewsglobal.in/#organization"
         }
       }
 
     ]
   }
+
+  
+
 
   </script>
 
@@ -455,25 +458,7 @@
 
 <body>
 
-  <!-- LIVE FLASH -->
 
-  <div class="ticker-bar">
-
-    <div class="ticker-label">
-      <span class="pulse-dot"></span>
-      LIVE FLASH
-    </div>
-
-    <div
-      class="ticker-text"
-      id="liveTickerText"
-    >
-      🔥 China pushes BRICS toward AI & economic cooperation •
-      🌍 Global developments monitored •
-      🛢️ Global energy supply watch
-    </div>
-
-  </div>
 
 
   <!-- HEADER -->
@@ -526,7 +511,8 @@
         About
       </a>
 
-    </nav>
+    <a href="submit-news.html">Submit a Story</a>
+</nav>
 
   </header>
 
@@ -555,24 +541,11 @@
 
     <main>
 
-      <div class="section-header">
-
-        <h2 class="section-title">
-          ⚡ Latest Bullet Dispatches
-        </h2>
-
-        <a
-          href="articles.html"
-          class="read-more-link"
-          style="font-size:13px;"
-        >
-          View In-Depth Articles →
-        </a>
-
-      </div>
+      
 
 
       <!-- Dynamic feed -->
+      <p class="editorial-note">Independent digital journalism. Every reader submission is reviewed before publication.</p>
 
       <div
         class="news-grid"
@@ -819,6 +792,104 @@
   <script>
     loadBulletNews("all");
   </script>
+
+
+
+<!-- BNG INTERNSHIP PROMO POPUP -->
+<div id="internshipPopup" class="internship-popup-overlay" role="dialog"
+     aria-modal="true" aria-labelledby="internshipPopupTitle" hidden>
+
+  <div class="internship-popup-card">
+    <button type="button" class="internship-popup-close"
+            id="closeInternshipPopup" aria-label="Close popup">
+      &times;
+    </button>
+
+    <span class="internship-popup-label">🌍 STUDENT OPPORTUNITY</span>
+
+    <h2 id="internshipPopupTitle">Editorial Internship Program</h2>
+
+    <p class="internship-popup-subtitle">
+      Turn your curiosity into powerful stories.
+    </p>
+
+    <div class="internship-popup-details">
+      <div>
+        <strong>DAY 1</strong>
+        <span>Training</span>
+      </div>
+      <div>
+        <strong>DAYS 2–7</strong>
+        <span>3 Articles</span>
+      </div>
+      <div>
+        <strong>DAY 8</strong>
+        <span>Feedback</span>
+      </div>
+      <div>
+        <strong>DAY 9</strong>
+        <span>Certificates*</span>
+      </div>
+    </div>
+
+    <p class="internship-popup-note">
+      Submit three articles on different topics. News sharing is optional.
+      Submissions are reviewed, and publication is not guaranteed.
+    </p>
+
+    <a class="internship-popup-apply"
+       href="https://forms.gle/Wz6318SC8eK4vuDY8"
+       target="_blank" rel="noopener noreferrer">
+      Apply for the Internship →
+    </a>
+
+    <button type="button" class="internship-popup-later"
+            id="laterInternshipPopup">
+      Maybe later
+    </button>
+
+    <small>*Digital certificates are sent by email to eligible participants.</small>
+    <div class="internship-popup-brand">BULLET NEWS GLOBAL</div>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const popup = document.getElementById("internshipPopup");
+  const closeButton = document.getElementById("closeInternshipPopup");
+  const laterButton = document.getElementById("laterInternshipPopup");
+
+  if (!popup || !closeButton || !laterButton) {
+    console.error("BNG internship popup elements are missing.");
+    return;
+  }
+
+  function closePopup() {
+    popup.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  function openPopup() {
+    popup.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  closeButton.addEventListener("click", closePopup);
+  laterButton.addEventListener("click", closePopup);
+
+  popup.addEventListener("click", function (event) {
+    if (event.target === popup) closePopup();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !popup.hidden) closePopup();
+  });
+
+  setTimeout(openPopup, 1800);
+});
+</script>
+
 
 </body>
 
