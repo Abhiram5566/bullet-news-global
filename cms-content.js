@@ -83,7 +83,7 @@ async function mountNewsDesk(id, folder, defaultIcon, deskName) {
   }).join("");
 }
 
-mountNewsDesk("cms-world-news", "content/world-news", "🌍", "World");
+mountNewsDesk("news-feed-container", "content/world-news", "🌍", "World");
 mountNewsDesk("cms-china-news", "content/china-news", "🇨🇳", "China");
 mountNewsDesk("cms-korea-news", "content/korea-news", "🇰🇷", "Korea");
 mountIndiaSections();
