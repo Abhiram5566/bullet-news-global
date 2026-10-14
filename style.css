@@ -1215,3 +1215,8 @@ background:#a60000;
     margin-left: 0;
   }
 }
+
+.cms-esports-summary.no-clamp {
+  display: block;
+  overflow: visible;
+}

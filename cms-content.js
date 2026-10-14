@@ -75,9 +75,11 @@ async function mountEsports() {
     const date = esc(dateLabel(item.date));
     const imageUrl = typeof item.image === "string" && (/^https?:\/\//i.test(item.image) || item.image.startsWith("/")) ? item.image : "";
     const image = imageUrl ? '<img class="cms-esports-image" loading="lazy" src="' + esc(imageUrl) + '" alt="' + title + '">' : "";
-    const body = item.body && String(item.body).trim()
+    const hasBody = Boolean(item.body && String(item.body).trim());
+    const body = hasBody
       ? '<details class="cms-esports-details"><summary>Read full story</summary><div class="cms-esports-full-body">' + formatPlainBody(item.body) + '</div></details>'
       : "";
+    const summaryClass = hasBody ? "cms-esports-summary" : "cms-esports-summary no-clamp";
     const sourceOk = typeof item.source === "string" && /^https?:\/\//i.test(item.source);
     const source = sourceOk ? '<p class="cms-esports-source"><a href="' + esc(item.source) + '" target="_blank" rel="noopener noreferrer">Original source ↗</a></p>' : "";
     return '<article class="news-card cms-esports-card">' +
@@ -87,7 +89,7 @@ async function mountEsports() {
       '</p>' +
       image +
       '<h3>' + title + '</h3>' +
-      '<p class="cms-esports-summary">' + summary + '</p>' +
+      '<p class="' + summaryClass + '">' + summary + '</p>' +
       body +
       source +
       '</article>';
