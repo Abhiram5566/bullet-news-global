@@ -4,10 +4,98 @@
  const api=(folder)=>`https://api.github.com/repos/${owner}/${repo}/contents/${folder}?ref=${branch}`;
  const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  async function getFolder(folder){try{const r=await fetch(api(folder));if(!r.ok)return[];const files=(await r.json()).filter(x=>x.name.endsWith('.json'));return (await Promise.all(files.map(async f=>{try{const x=await fetch(f.download_url);return x.ok?await x.json():null}catch{return null}}))).filter(Boolean)}catch{return[]}}
- function card(item, kind){const title=esc(item.title||item.name||'Untitled');const summary=esc(item.summary||item.bio||item.excerpt||'');const image=item.image?`<img loading="lazy" src="${esc(item.image)}" alt="${title}">`:'';const meta=esc([item.country,item.status,item.game,item.category,item.role].filter(Boolean).join(' · '));const link=item.link||item.source;return `<article class="cms-content-card">${image}<p class="form-help">${meta}</p><h3>${title}</h3><p>${summary}</p>${link?`<p><a href="${esc(link)}" target="_blank" rel="noopener noreferrer">Reference / Read more ↗</a></p>`:''}</article>`}
- async function mount(id,folder,kind){const el=document.getElementById(id);if(!el)return;const data=await getFolder(folder);const sorted=data.sort((a,b)=>new Date(b.date||0)-new Date(a.date||0));if(!sorted.length){el.innerHTML='<p class="form-help">No CMS entries have been published in this section yet.</p>';return}el.innerHTML=sorted.map(x=>card(x,kind)).join('')}
+
  async function team(){const el=document.getElementById('editorial-team');if(!el)return;const data=(await getFolder('content/editorial')).filter(x=>x.published===true).sort((a,b)=>(a.order||99)-(b.order||99));el.innerHTML=data.length?data.map(x=>`<article class="cms-content-card"><h3>${esc(x.name)}</h3><p><strong>${esc(x.role)}</strong></p><p>${esc(x.bio||'')}</p>${x.email?`<p><a href="mailto:${esc(x.email)}">Contact</a></p>`:''}</article>`).join(''):'<p class="form-help">No public team profiles have been approved for display yet.</p>'}
- mount('cms-drama-list','content/dramas','drama');mount('cms-esports-list','content/esports','esports');team();
+ team();
+
+
+function formatPlainBody(value) {
+  return String(value || "")
+    .split(/\\n\\s*\\n/)
+    .map(paragraph => paragraph.trim())
+    .filter(Boolean)
+    .map(paragraph => '<p>' + esc(paragraph.replace(/^#{1,6}\\s+/gm, "").replace(/\\n/g, " ")) + '</p>')
+    .join("");
+}
+
+async function mountDramas() {
+  const element = document.getElementById("cms-drama-list");
+  if (!element) return;
+
+  const data = (await getFolder("content/dramas"))
+    .filter(item => item.featured !== false)
+    .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+  if (!data.length) {
+    element.innerHTML = '<p class="form-help">No additional dramas are listed yet. Add drama titles from Editorial Login.</p>';
+    return;
+  }
+
+  element.innerHTML = data.map(item => {
+    const title = esc(item.title || "Untitled drama");
+    const summary = esc(item.summary || "");
+    const country = esc(item.country || "Drama");
+    const status = esc(item.status || "");
+    const cast = esc(item.cast || "");
+    const posterUrl = typeof item.image === "string" && /^(https?:\\/\\/|\\/)/i.test(item.image) ? item.image : "";
+    const poster = posterUrl
+      ? '<img class="drama-poster" loading="lazy" src="' + esc(posterUrl) + '" alt="' + title + ' poster">'
+      : '<div class="drama-poster-placeholder" aria-hidden="true">🎬</div>';
+    const linkOk = typeof item.link === "string" && /^https?:\\/\\//i.test(item.link);
+    const link = linkOk ? '<a class="watch-btn" href="' + esc(item.link) + '" target="_blank" rel="noopener noreferrer">Drama Details ↗</a>' : "";
+    return '<article class="drama-card cms-drama-card">' +
+      poster +
+      '<p class="drama-meta">' + country + (status ? ' · ' + status : '') + '</p>' +
+      '<h3>' + title + '</h3>' +
+      (cast ? '<p class="drama-cast"><strong>Cast:</strong> ' + cast + '</p>' : '') +
+      (summary ? '<p>' + summary + '</p>' : '') +
+      link +
+      '</article>';
+  }).join("");
+}
+
+async function mountEsports() {
+  const element = document.getElementById("cms-esports-list");
+  if (!element) return;
+
+  const data = (await getFolder("content/esports"))
+    .filter(item => item.featured !== false)
+    .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+  if (!data.length) {
+    element.innerHTML = '<p class="form-help">No esports stories have been published yet. Add a story through Editorial Login.</p>';
+    return;
+  }
+
+  element.innerHTML = data.map(item => {
+    const title = esc(item.title || "Untitled esports story");
+    const summary = esc(item.summary || item.excerpt || "");
+    const category = esc(item.category || "Esports");
+    const game = esc(item.game || "");
+    const date = esc(dateLabel(item.date));
+    const imageUrl = typeof item.image === "string" && /^(https?:\\/\\/|\\/)/i.test(item.image) ? item.image : "";
+    const image = imageUrl ? '<img class="cms-esports-image" loading="lazy" src="' + esc(imageUrl) + '" alt="' + title + '">' : "";
+    const body = item.body && String(item.body).trim()
+      ? '<details class="cms-esports-details"><summary>Read full story</summary><div class="cms-esports-full-body">' + formatPlainBody(item.body) + '</div></details>'
+      : "";
+    const sourceOk = typeof item.source === "string" && /^https?:\\/\\//i.test(item.source);
+    const source = sourceOk ? '<p class="cms-esports-source"><a href="' + esc(item.source) + '" target="_blank" rel="noopener noreferrer">Original source ↗</a></p>' : "";
+    return '<article class="news-card cms-esports-card">' +
+      '<p class="cms-esports-meta"><span class="badge badge-esports">' + category + '</span>' +
+      (game ? '<span class="cms-esports-game">' + game + '</span>' : '') +
+      (date ? '<span class="cms-esports-date">' + date + '</span>' : '') +
+      '</p>' +
+      image +
+      '<h3>' + title + '</h3>' +
+      '<p class="cms-esports-summary">' + summary + '</p>' +
+      body +
+      source +
+      '</article>';
+  }).join("");
+}
+
+mountDramas();
+mountEsports();
 
 async function mountIndiaSections() {
   const element = document.getElementById("cms-india-sections");

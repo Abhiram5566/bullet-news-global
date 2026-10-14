@@ -1096,3 +1096,122 @@ background:#a60000;
     animation: none;
   }
 }
+
+
+/* Drama Hub CMS listings */
+.drama-hub-main,
+.esports-main {
+  display: block;
+  max-width: 1400px;
+  margin: 24px auto;
+  padding: 0 18px;
+  box-sizing: border-box;
+}
+.drama-library-section {
+  max-width: 1400px;
+}
+.drama-poster-placeholder {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 54px;
+  color: #c9d1d9;
+  background: linear-gradient(135deg, #21262d, #161b22);
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.cms-drama-card .drama-poster {
+  height: 300px;
+}
+.drama-meta,
+.drama-cast {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #9ca3af !important;
+}
+.drama-grid .cms-drama-card {
+  min-width: 0;
+  box-sizing: border-box;
+}
+.esports-section {
+  max-width: 1000px;
+}
+.esports-news-list {
+  display: grid;
+  gap: 18px;
+}
+.cms-esports-card {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+.cms-esports-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: #9ca3af !important;
+  font-size: 13px;
+}
+.cms-esports-game {
+  font-weight: 700;
+  color: #c9d1d9;
+}
+.cms-esports-date {
+  margin-left: auto;
+}
+.cms-esports-image {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 12px 0 18px;
+}
+.cms-esports-summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  line-height: 1.75;
+}
+.cms-esports-details {
+  margin-top: 12px;
+  border-top: 1px solid #30363d;
+  padding-top: 12px;
+}
+.cms-esports-details summary {
+  color: #58a6ff;
+  cursor: pointer;
+  font-weight: 700;
+}
+.cms-esports-full-body p {
+  line-height: 1.75;
+}
+.cms-esports-source a {
+  color: #58a6ff;
+}
+.esports-submit {
+  margin-top: 20px;
+}
+@media (max-width: 900px) {
+  .drama-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .drama-grid {
+    grid-template-columns: 1fr;
+  }
+  .drama-hub-main,
+  .esports-main {
+    padding: 0 12px;
+  }
+  .cms-esports-date {
+    margin-left: 0;
+  }
+}
