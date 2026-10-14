@@ -11,10 +11,10 @@
 
 function formatPlainBody(value) {
   return String(value || "")
-    .split(/\\n\\s*\\n/)
+    .split(/\n\s*\n/)
     .map(paragraph => paragraph.trim())
     .filter(Boolean)
-    .map(paragraph => '<p>' + esc(paragraph.replace(/^#{1,6}\\s+/gm, "").replace(/\\n/g, " ")) + '</p>')
+    .map(paragraph => '<p>' + esc(paragraph.replace(/^#{1,6}\s+/gm, "").replace(/\n/g, " ")) + '</p>')
     .join("");
 }
 
@@ -37,11 +37,11 @@ async function mountDramas() {
     const country = esc(item.country || "Drama");
     const status = esc(item.status || "");
     const cast = esc(item.cast || "");
-    const posterUrl = typeof item.image === "string" && /^(https?:\\/\\/|\\/)/i.test(item.image) ? item.image : "";
+    const posterUrl = typeof item.image === "string" && (/^https?:\/\//i.test(item.image) || item.image.startsWith("/")) ? item.image : "";
     const poster = posterUrl
       ? '<img class="drama-poster" loading="lazy" src="' + esc(posterUrl) + '" alt="' + title + ' poster">'
       : '<div class="drama-poster-placeholder" aria-hidden="true">🎬</div>';
-    const linkOk = typeof item.link === "string" && /^https?:\\/\\//i.test(item.link);
+    const linkOk = typeof item.link === "string" && /^https?:\/\//i.test(item.link);
     const link = linkOk ? '<a class="watch-btn" href="' + esc(item.link) + '" target="_blank" rel="noopener noreferrer">Drama Details ↗</a>' : "";
     return '<article class="drama-card cms-drama-card">' +
       poster +
@@ -73,12 +73,12 @@ async function mountEsports() {
     const category = esc(item.category || "Esports");
     const game = esc(item.game || "");
     const date = esc(dateLabel(item.date));
-    const imageUrl = typeof item.image === "string" && /^(https?:\\/\\/|\\/)/i.test(item.image) ? item.image : "";
+    const imageUrl = typeof item.image === "string" && (/^https?:\/\//i.test(item.image) || item.image.startsWith("/")) ? item.image : "";
     const image = imageUrl ? '<img class="cms-esports-image" loading="lazy" src="' + esc(imageUrl) + '" alt="' + title + '">' : "";
     const body = item.body && String(item.body).trim()
       ? '<details class="cms-esports-details"><summary>Read full story</summary><div class="cms-esports-full-body">' + formatPlainBody(item.body) + '</div></details>'
       : "";
-    const sourceOk = typeof item.source === "string" && /^https?:\\/\\//i.test(item.source);
+    const sourceOk = typeof item.source === "string" && /^https?:\/\//i.test(item.source);
     const source = sourceOk ? '<p class="cms-esports-source"><a href="' + esc(item.source) + '" target="_blank" rel="noopener noreferrer">Original source ↗</a></p>' : "";
     return '<article class="news-card cms-esports-card">' +
       '<p class="cms-esports-meta"><span class="badge badge-esports">' + category + '</span>' +
