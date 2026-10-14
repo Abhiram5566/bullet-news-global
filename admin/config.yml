@@ -73,8 +73,63 @@ collections:
       - { label: "Publish on India Page", name: "published", widget: "boolean", default: true }
 
 
+
+  # WORLD DESK — CMS-managed international news
+  - name: "world_news"
+    label: "🌍 World News"
+    folder: "content/world-news"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Headline", name: "title", widget: "string" }
+      - { label: "Topic", name: "category", widget: "select", options: ["World Affairs", "Diplomacy", "Economy", "Markets", "Technology", "Climate", "Science", "Society"] }
+      - { label: "Icon", name: "icon", widget: "string", default: "🌍" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Breaking News?", name: "isBreaking", widget: "boolean", default: false }
+      - { label: "Publish on World page", name: "published", widget: "boolean", default: true }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Source / Read More URL", name: "link", widget: "string", required: false }
+
+  # CHINA DESK — CMS-managed China news
+  - name: "china_news"
+    label: "🇨🇳 China News"
+    folder: "content/china-news"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Headline", name: "title", widget: "string" }
+      - { label: "Topic", name: "category", widget: "select", options: ["Politics", "Diplomacy", "Economy", "Technology", "Trade", "Science", "Society", "Entertainment"] }
+      - { label: "Icon", name: "icon", widget: "string", default: "🇨🇳" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Breaking News?", name: "isBreaking", widget: "boolean", default: false }
+      - { label: "Publish on China page", name: "published", widget: "boolean", default: true }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Source / Read More URL", name: "link", widget: "string", required: false }
+
+  # KOREA DESK — CMS-managed South Korea news
+  - name: "korea_news"
+    label: "🇰🇷 Korea News"
+    folder: "content/korea-news"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Headline", name: "title", widget: "string" }
+      - { label: "Topic", name: "category", widget: "select", options: ["Politics", "Diplomacy", "Economy", "Technology", "Semiconductors", "Entertainment", "K-Pop", "Sports", "Society"] }
+      - { label: "Icon", name: "icon", widget: "string", default: "🇰🇷" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Breaking News?", name: "isBreaking", widget: "boolean", default: false }
+      - { label: "Publish on Korea page", name: "published", widget: "boolean", default: true }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Source / Read More URL", name: "link", widget: "string", required: false }
+
   # ==========================================
-  # 3. DRAMA HUB — CMS-managed drama listings
+  # 6. DRAMA HUB — CMS-managed drama listings
   # ==========================================
   - name: "dramas"
     label: "🎭 Drama Hub"
@@ -95,7 +150,7 @@ collections:
       - { label: "Feature on Drama Hub", name: "featured", widget: "boolean", default: true }
 
   # ==========================================
-  # 4. ESPORTS — CMS-managed coverage
+  # 7. ESPORTS — CMS-managed coverage
   # ==========================================
   - name: "esports"
     label: "🎮 Esports Desk"
@@ -116,7 +171,7 @@ collections:
       - { label: "Feature on Esports Page", name: "featured", widget: "boolean", default: true }
 
   # ==========================================
-  # 5. EDITORIAL DEPARTMENT — team / roles
+  # 8. EDITORIAL DEPARTMENT — team / roles
   # ==========================================
   - name: "editorial_team"
     label: "🧭 Editorial Department"
@@ -134,7 +189,7 @@ collections:
       - { label: "Show on Editorial Page", name: "published", widget: "boolean", default: false }
 
   # ==========================================
-  # 6. SITE PAGE COPY — editable headings and intro text
+  # 9. SITE PAGE COPY — editable headings and intro text
   # ==========================================
   - name: "page_copy"
     label: "🧩 Page Copy & Settings"

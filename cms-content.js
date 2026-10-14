@@ -40,5 +40,51 @@ async function mountIndiaSections() {
   `).join("");
 }
 
+
+function dateLabel(value) {
+  if (!value) return "";
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return "";
+  return parsed.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+}
+
+async function mountNewsDesk(id, folder, defaultIcon, deskName) {
+  const element = document.getElementById(id);
+  if (!element) return;
+
+  const data = (await getFolder(folder))
+    .filter(item => item.published !== false)
+    .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+  if (!data.length) {
+    element.innerHTML = '<div class="info-box"><p>No published ' + esc(deskName) + ' stories yet. Sign in to Editorial Login to add a story.</p></div>';
+    return;
+  }
+
+  element.innerHTML = data.map(item => {
+    const icon = esc(item.icon || defaultIcon);
+    const title = esc(item.title || "Untitled story");
+    const summary = esc(item.summary || "");
+    const category = esc(item.category || deskName);
+    const date = esc(dateLabel(item.date));
+    const breaking = item.isBreaking
+      ? '<span class="badge" style="background:#b91c1c;color:#fff;margin-right:8px;">BREAKING</span>'
+      : "";
+    const validLink = typeof item.link === "string" && /^https?:\/\//i.test(item.link);
+    const sourceLink = validLink
+      ? '<p class="form-help"><a href="' + esc(item.link) + '" target="_blank" rel="noopener noreferrer">Read original report ↗</a></p>'
+      : "";
+    return '<article class="news-card' + (item.isBreaking ? ' breaking-card' : '') + '">' +
+      '<p class="form-help">' + breaking + '<strong>' + category + '</strong>' + (date ? ' · ' + date : '') + '</p>' +
+      '<h3>' + icon + ' ' + title + '</h3>' +
+      '<p>' + summary + '</p>' +
+      sourceLink +
+      '</article>';
+  }).join("");
+}
+
+mountNewsDesk("cms-world-news", "content/world-news", "🌍", "World");
+mountNewsDesk("cms-china-news", "content/china-news", "🇨🇳", "China");
+mountNewsDesk("cms-korea-news", "content/korea-news", "🇰🇷", "Korea");
 mountIndiaSections();
 })();
