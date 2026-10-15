@@ -33,26 +33,19 @@ async function mountDramas() {
 
   element.innerHTML = data.map(item => {
     const title = esc(item.title || "Untitled drama");
-    const summary = esc(item.summary || "");
-    const country = esc(item.country || "Drama");
-    const status = esc(item.status || "");
-    const cast = esc(item.cast || "");
     const posterUrl = typeof item.image === "string" && (/^https?:\/\//i.test(item.image) || item.image.startsWith("/")) ? item.image : "";
     const poster = posterUrl
-      ? '<img class="drama-poster" loading="lazy" src="' + esc(posterUrl) + '" alt="' + title + ' poster">'
+      ? '<img class="drama-poster" loading="lazy" src="' + esc(posterUrl) + '" alt="' + title + '">'
       : '<div class="drama-poster-placeholder" aria-hidden="true">🎬</div>';
-    const genre = esc(item.genre || "");
+    const genre = esc(item.genre || "Drama");
     const hasLocalPage = typeof item.page === "string" && /^[a-z0-9-]+\.html$/i.test(item.page);
     const link = hasLocalPage
-      ? '<a class="watch-btn" href="' + esc(item.page) + '">Read More →</a>'
+      ? '<a class="watch-btn" href="' + esc(item.page) + '">Read More</a>'
       : '<span class="form-help">Detail page coming soon</span>';
     return '<article class="drama-card cms-drama-card">' +
       poster +
-      '<p class="drama-meta">' + country + (status ? ' · ' + status : '') + '</p>' +
       '<h3>' + title + '</h3>' +
-      (genre ? '<p class="drama-meta">' + genre + '</p>' : '') +
-      (cast ? '<p class="drama-cast"><strong>Cast:</strong> ' + cast + '</p>' : '') +
-      (summary ? '<p>' + summary + '</p>' : '') +
+      '<p>' + genre + '</p>' +
       link +
       '</article>';
   }).join("");
