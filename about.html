@@ -12,7 +12,7 @@
 
   <meta
     name="description"
-    content="About Bullet News Global — our coverage, editorial approach, verification practices, corrections policy and relationship with Rudra Works."
+    content="Meet the leadership of Bullet News Global, learn about our editorial approach, coverage, corrections policy and relationship with Rudra Works."
   >
 
   <meta
@@ -51,95 +51,83 @@
   >
 
 
-  <!-- ORGANIZATION STRUCTURED DATA -->
-
+  <!-- ORGANIZATION, LEADERSHIP AND ABOUT PAGE STRUCTURED DATA -->
   <script type="application/ld+json">
-
-  {
+{
     "@context": "https://schema.org",
-
     "@graph": [
-
       {
         "@type": "NewsMediaOrganization",
-
-        "@id":
-          "https://bulletnewsglobal.in/#organization",
-
-        "name":
-          "Bullet News Global",
-
-        "url":
-          "https://bulletnewsglobal.in/",
-
-        "description":
-          "A digital news and information platform covering global affairs, India, China, Korea, technology, esports and entertainment.",
-
+        "@id": "https://bulletnewsglobal.in/#organization",
+        "name": "Bullet News Global",
+        "url": "https://bulletnewsglobal.in/",
+        "description": "A digital news and information platform covering global affairs, India, China, Korea, technology, esports and entertainment.",
         "parentOrganization": {
-
-          "@type": "Organization",
-
-          "name": "Rudra Works"
-
-        }
-
-      },
-
-
-      {
-        "@type": "AboutPage",
-
-        "@id":
-          "https://bulletnewsglobal.in/about.html#webpage",
-
-        "url":
-          "https://bulletnewsglobal.in/about.html",
-
-        "name":
-          "About Bullet News Global",
-
-        "isPartOf": {
-
-          "@id":
-            "https://bulletnewsglobal.in/#website"
-
+          "@id": "https://bulletnewsglobal.in/#rudra-works"
         },
-
-        "about": {
-
-          "@id":
-            "https://bulletnewsglobal.in/#organization"
-
-        }
-
+        "founder": {
+          "@id": "https://bulletnewsglobal.in/#abhiram-sinkar"
+        },
+        "employee": {
+          "@id": "https://bulletnewsglobal.in/#affan-ali"
+        },
+        "email": "bulletnewsglobal@gmail.com"
       },
-
-
+      {
+        "@type": "Organization",
+        "@id": "https://bulletnewsglobal.in/#rudra-works",
+        "name": "Rudra Works",
+        "description": "A technology and digital ventures initiative operating Bullet News Global.",
+        "employee": {
+          "@id": "https://bulletnewsglobal.in/#abhiram-sinkar"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://bulletnewsglobal.in/#abhiram-sinkar",
+        "name": "Abhiram Sinkar",
+        "jobTitle": "CEO of Rudra Works; Founder and Publisher of Bullet News Global",
+        "worksFor": [
+          {
+            "@id": "https://bulletnewsglobal.in/#rudra-works"
+          },
+          {
+            "@id": "https://bulletnewsglobal.in/#organization"
+          }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://bulletnewsglobal.in/#affan-ali",
+        "name": "Affan Ali",
+        "jobTitle": "Head of Editorial Department",
+        "worksFor": {
+          "@id": "https://bulletnewsglobal.in/#organization"
+        }
+      },
       {
         "@type": "WebSite",
-
-        "@id":
-          "https://bulletnewsglobal.in/#website",
-
-        "url":
-          "https://bulletnewsglobal.in/",
-
-        "name":
-          "Bullet News Global",
-
+        "@id": "https://bulletnewsglobal.in/#website",
+        "url": "https://bulletnewsglobal.in/",
+        "name": "Bullet News Global",
         "publisher": {
-
-          "@id":
-            "https://bulletnewsglobal.in/#organization"
-
+          "@id": "https://bulletnewsglobal.in/#organization"
         }
-
+      },
+      {
+        "@type": "AboutPage",
+        "@id": "https://bulletnewsglobal.in/about.html#webpage",
+        "url": "https://bulletnewsglobal.in/about.html",
+        "name": "About Bullet News Global",
+        "isPartOf": {
+          "@id": "https://bulletnewsglobal.in/#website"
+        },
+        "about": {
+          "@id": "https://bulletnewsglobal.in/#organization"
+        }
       }
-
     ]
-
   }
-
   </script>
 
 
@@ -559,6 +547,8 @@
         About
       </a>
 
+      <a href="team.html">Team</a>
+
     <a href="submit-news.html">Submit a Story</a>
 </nav>
 
@@ -636,6 +626,30 @@
       </div>
 
     </section>
+
+    <!-- LEADERSHIP -->
+
+    <section class="about-section">
+
+      <h2>Leadership & Editorial Responsibility</h2>
+
+      <p>Bullet News Global is a digital news and information platform operated as a project of Rudra Works. The people listed below are responsible for its organizational direction and editorial leadership.</p>
+
+      <div class="identity-box">
+        <p><strong>Abhiram Sinkar</strong><br>CEO of Rudra Works; Founder &amp; Publisher of Bullet News Global</p>
+      </div>
+
+      <div class="identity-box">
+        <p><strong>Affan Ali</strong><br>Head of Editorial Department, Bullet News Global</p>
+      </div>
+
+      <div class="about-links">
+        <a href="team.html" class="about-link">Meet the Team</a>
+      </div>
+
+    </section>
+
+
 
 
     <!-- COVERAGE -->
@@ -933,6 +947,8 @@
           Home
         </a>
 
+        <a href="team.html" class="about-link">Our Team</a>
+
 
         <a
           href="articles.html"
@@ -1025,6 +1041,10 @@
       <a href="about.html">
         About & Editorial Standards
       </a>
+
+      •
+
+      <a href="team.html">Our Team</a>
 
       •
 
