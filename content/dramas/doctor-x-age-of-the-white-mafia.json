@@ -9,5 +9,38 @@
   "date": "2026-10-09T00:00:00+05:30",
   "featured": true,
   "genre": "Medical • Noir • Drama",
-  "page": "doctor-x-age-of-the-white-mafia.html"
+  "page": "doctor-x-age-of-the-white-mafia.html",
+  "nativeTitle": "닥터 X: 하얀 마피아의 시대",
+  "episodes": "",
+  "provider": "SBS (Korean broadcaster); international OTT not confirmed",
+  "providerUrl": "https://www.sbs.co.kr/",
+  "trailerUrl": "https://news.sbs.co.kr/english/endPagePrintPopup.do?news_id=N1008787496",
+  "trailerEmbed": "",
+  "trailerLabel": "SBS promotional coverage",
+  "whyFans": [
+    "The medical-noir format turns the hospital into a battleground over power, ethics and corruption.",
+    "Gye Su-jeong is presented as a gifted surgeon willing to challenge a system she believes is broken.",
+    "The story brings medical dilemmas into conflict with institutional politics."
+  ],
+  "review": "Doctor X moves beyond routine hospital cases and into a fight with the institution itself. Its central appeal is a surgeon whose talent comes with an uncompromising attitude, placing patient care and hospital politics in direct conflict. The noir approach should work best when systemic stakes stay connected to individual patients.",
+  "providerNote": "SBS is the Korean broadcaster. An international streaming provider was not confirmed in the sources reviewed.",
+  "castMembers": [
+    {
+      "actor": "Kim Ji-won",
+      "role": "Gye Su-jeong — gifted surgeon known as Doctor X",
+      "instagram": "https://www.instagram.com/geewonii/"
+    },
+    {
+      "actor": "Lee Jung-eun",
+      "role": "Jang Hee-sook — senior hospital figure"
+    },
+    {
+      "actor": "Son Hyun-joo",
+      "role": "Bu Seung-kwon — hospital leader"
+    },
+    {
+      "actor": "Kim Woo-seok",
+      "role": "Park Tae-kyung — doctor and member of the main cast"
+    }
+  ]
 }

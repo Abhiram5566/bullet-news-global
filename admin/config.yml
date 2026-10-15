@@ -144,6 +144,30 @@ collections:
       - { label: "Status", name: "status", widget: "select", options: ["Upcoming", "Airing", "Completed", "Review"], default: "Upcoming" }
       - { label: "Poster", name: "image", widget: "image", required: false }
       - { label: "Cast", name: "cast", widget: "string", required: false }
+      - { label: "Native Title", name: "nativeTitle", widget: "string", required: false }
+      - { label: "Episode Count", name: "episodes", widget: "string", required: false }
+      - { label: "Streaming Provider", name: "provider", widget: "string", required: false }
+      - { label: "Provider URL", name: "providerUrl", widget: "string", required: false }
+      - { label: "Trailer / Preview URL", name: "trailerUrl", widget: "string", required: false }
+      - { label: "Trailer Label", name: "trailerLabel", widget: "string", required: false }
+      - label: "Why Fans Are Excited"
+        name: "whyFans"
+        widget: "list"
+        required: false
+        field: { label: "Reason", name: "reason", widget: "string" }
+      - { label: "Bullet News Review", name: "review", widget: "text", required: false }
+      - { label: "Provider Availability Note", name: "providerNote", widget: "text", required: false }
+      - label: "Cast Members & Public Social Profiles"
+        name: "castMembers"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Actor", name: "actor", widget: "string" }
+          - { label: "Character / Role", name: "role", widget: "string" }
+          - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+          - { label: "TikTok URL", name: "tiktok", widget: "string", required: false }
+          - { label: "Douyin URL", name: "douyin", widget: "string", required: false }
+          - { label: "Weibo URL", name: "weibo", widget: "string", required: false }
       - { label: "Genre", name: "genre", widget: "string", hint: "e.g. Historical Mystery • Costume" }
       - { label: "Local Drama Detail Page", name: "page", widget: "string", required: false, hint: "HTML filename in the repository root, e.g. shadow-punisher.html. Read More opens this page on Bullet News Global." }
       - { label: "Summary", name: "summary", widget: "text" }

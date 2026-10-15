@@ -9,5 +9,43 @@
   "date": "2026-10-10T00:00:00+05:30",
   "featured": true,
   "genre": "Historical • Spy • Romance",
-  "page": "100-days-of-deception.html"
+  "page": "100-days-of-deception.html",
+  "nativeTitle": "100일의 거짓말",
+  "episodes": "",
+  "provider": "Netflix",
+  "providerUrl": "https://www.netflix.com/in/title/82682433",
+  "trailerUrl": "https://www.netflix.com/in/title/82682433",
+  "trailerEmbed": "",
+  "trailerLabel": "Official Netflix title page / available trailer",
+  "whyFans": [
+    "The historical spy premise blends romance with an undercover mission inside the colonial government.",
+    "The lead's resourcefulness and language skills give her a reason to enter a dangerous assignment.",
+    "Personal relationships sit alongside a wider struggle for Korean independence."
+  ],
+  "review": "100 Days of Deception combines a historical setting with espionage and a complicated romance. The undercover mission creates a natural source of suspense, while shifting identities put trust under pressure. Its strongest moments should come when the political stakes and the characters' personal loyalties collide.",
+  "providerNote": "Netflix's official title page is the best starting point for the listing. Catalogue, subtitles and availability vary by region.",
+  "castMembers": [
+    {
+      "actor": "Kim Yoo-jung",
+      "role": "Lee Ga-kyung — pickpocket recruited for an undercover mission",
+      "instagram": "https://www.instagram.com/you_r_love/"
+    },
+    {
+      "actor": "Park Jin-young",
+      "role": "Sato Hideo — interpreter with a hidden Korean identity",
+      "instagram": "https://www.instagram.com/jinyoung_0922jy/"
+    },
+    {
+      "actor": "Kim Hyun-joo",
+      "role": "So-ran — sniper working with the independence group"
+    },
+    {
+      "actor": "Lee Moo-saeng",
+      "role": "Yoo Philip — correspondent"
+    },
+    {
+      "actor": "Jin Sun-kyu",
+      "role": "Sato Shinichi — inspector-general"
+    }
+  ]
 }

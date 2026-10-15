@@ -9,5 +9,38 @@
   "date": "2026-10-06T00:00:00+05:30",
   "featured": true,
   "genre": "Comedy • Community • Drama",
-  "page": "king-of-comedy.html"
+  "page": "king-of-comedy.html",
+  "nativeTitle": "喜剧之王",
+  "episodes": "24",
+  "provider": "iQIYI",
+  "providerUrl": "https://www.iqiyi.com/a_havb95ut2l.html",
+  "trailerUrl": "https://www.iqiyi.com/a_havb95ut2l.html",
+  "trailerEmbed": "",
+  "trailerLabel": "Official iQIYI series page and available previews",
+  "whyFans": [
+    "The ensemble mixes comedy with everyday challenges facing a local community.",
+    "The coastal-community setting leaves room for business schemes and comic misunderstandings.",
+    "The group dynamic gives the story space for contrasting personalities and running jokes."
+  ],
+  "review": "King of Comedy is built around a community problem and an ensemble, giving the comedy a clear goal rather than relying only on punchlines. Its appeal will depend on how naturally the characters' rivalries and friendships grow out of that situation. Viewers looking for a lighter series may enjoy the mix of local-life details and broad comedy.",
+  "providerNote": "Use the iQIYI provider page to confirm the current cast, episodes and video previews. Character-role names are left unconfirmed where the listing reviewed did not clearly identify them.",
+  "castMembers": [
+    {
+      "actor": "Yang Chaoyue",
+      "role": "Main cast; character name not confirmed in the listing reviewed",
+      "weibo": "https://weibo.com/u/5644764907"
+    },
+    {
+      "actor": "Sunday",
+      "role": "Main cast; character name not confirmed in the listing reviewed"
+    },
+    {
+      "actor": "Zhang Chi",
+      "role": "Main cast; character name not confirmed in the listing reviewed"
+    },
+    {
+      "actor": "Jiang Shimeng",
+      "role": "Main cast; character name not confirmed in the listing reviewed"
+    }
+  ]
 }

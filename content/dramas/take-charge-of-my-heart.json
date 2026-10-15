@@ -9,5 +9,35 @@
   "date": "2026-10-09T00:00:00+05:30",
   "featured": true,
   "genre": "Romantic Comedy • Fantasy",
-  "page": "take-charge-of-my-heart.html"
+  "page": "take-charge-of-my-heart.html",
+  "nativeTitle": "나를 충전해줘",
+  "episodes": "",
+  "provider": "Netflix",
+  "providerUrl": "https://www.netflix.com/in/title/82016402",
+  "trailerUrl": "https://www.netflix.com/in/title/82016402",
+  "trailerEmbed": "",
+  "trailerLabel": "Official Netflix title page / available trailer",
+  "whyFans": [
+    "The artificial-heart premise adds a playful fantasy twist to a modern romantic comedy.",
+    "The unusual connection between the leads creates room for comic misunderstandings and emotional growth.",
+    "The high-concept setup gives the series an instantly recognisable hook."
+  ],
+  "review": "Take Charge of My Heart stands out with a high-concept meet-cute: one lead needs an artificial-heart recharge, while the other has an unusual electrical ability. That offers a clear comic engine, but the emotional payoff will depend on how the story develops their vulnerabilities beyond the fantasy gimmick. The premise is distinctive and easy to remember.",
+  "providerNote": "Netflix's title page lists the show and its leads. Check the local Netflix catalogue for availability and language options.",
+  "castMembers": [
+    {
+      "actor": "Kim Young-kwang",
+      "role": "Baek Ho-rang — corporate heir with an artificial heart",
+      "instagram": "https://www.instagram.com/aksakfn12/"
+    },
+    {
+      "actor": "Chae Soo-bin",
+      "role": "Na Bo-bae — romance writer whose touch can recharge him",
+      "instagram": "https://www.instagram.com/soobinms/"
+    },
+    {
+      "actor": "Cha Woo-min",
+      "role": "Ji Eun-ho — additional character"
+    }
+  ]
 }

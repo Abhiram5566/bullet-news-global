@@ -9,5 +9,39 @@
   "date": "2026-10-01T00:00:00+05:30",
   "featured": true,
   "genre": "Healing • Music • Human Drama",
-  "page": "your-personal-taxi.html"
+  "page": "your-personal-taxi.html",
+  "nativeTitle": "개인적인 택시",
+  "episodes": "8",
+  "provider": "Check your local streaming catalogue",
+  "providerUrl": "https://www.netflix.com/search?q=Your%20Personal%20Taxi",
+  "trailerUrl": "https://www.koreaherald.com/article/10869610",
+  "trailerEmbed": "",
+  "trailerLabel": "Drama announcement and preview information",
+  "whyFans": [
+    "The taxi format lets each passenger's story and meaningful song become a small emotional portrait.",
+    "A recurring driver creates a steady centre for stories about very different lives.",
+    "The healing tone offers an alternative to plot-heavy thrillers."
+  ],
+  "review": "Your Personal Taxi has an appealing simple device: passengers share parts of their lives through a ride and songs tied to their memories. That structure can make the show feel like a collection of small emotional portraits, while the recurring driver gives the season a steady centre. It is a good fit for viewers who enjoy reflective character stories.",
+  "providerNote": "Check the local catalogue directly. Availability and subtitles may vary by country; the linked article is a reference, not a guarantee of local streaming access.",
+  "castMembers": [
+    {
+      "actor": "Cha Tae-hyun",
+      "role": "Go Myung-seok — taxi driver at the centre of the passenger stories"
+    },
+    {
+      "actor": "Im Se-mi",
+      "role": "Supporting cast; role name not confirmed in the source reviewed",
+      "instagram": "https://www.instagram.com/susemee/"
+    },
+    {
+      "actor": "Joo Jong-hyuk",
+      "role": "Supporting cast; role name not confirmed in the source reviewed",
+      "instagram": "https://www.instagram.com/joojonghyuk/"
+    },
+    {
+      "actor": "Lee Jae-in",
+      "role": "Supporting cast; role name not confirmed in the source reviewed"
+    }
+  ]
 }

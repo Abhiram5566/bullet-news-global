@@ -9,5 +9,46 @@
   "date": "2026-10-02T00:00:00+05:30",
   "featured": true,
   "genre": "Historical Mystery • Costume • Action",
-  "page": "shadow-punisher.html"
+  "page": "shadow-punisher.html",
+  "nativeTitle": "魅影神捕",
+  "episodes": "30",
+  "provider": "iQIYI",
+  "providerUrl": "https://www.iq.com/album/shadow-punisher-2026-27mstpb8t4t?lang=en_us",
+  "trailerUrl": "https://www.iq.com/album/shadow-punisher-2026-27mstpb8t4t?lang=en_us",
+  "trailerEmbed": "",
+  "trailerLabel": "Official iQIYI title page and available previews",
+  "whyFans": [
+    "A sequence of unusual cases gradually points to a wider conspiracy.",
+    "The detective-team setup allows for deduction, rivalries and shifting alliances.",
+    "The costume setting and mystery format give the series a distinctive atmosphere."
+  ],
+  "review": "Shadow Punisher has a strong mystery hook: a detective unit investigates strange cases that point toward a larger threat. The story will be most compelling when each case develops the characters and advances the wider conspiracy. Its historical-fantasy atmosphere and ensemble give it a clear identity among costume dramas.",
+  "providerNote": "Use iQIYI's official listing to check episodes, subtitles and availability in your region.",
+  "castMembers": [
+    {
+      "actor": "Luo Yunxi",
+      "role": "Li Si — lead detective in the Divine Constable Bureau",
+      "weibo": "https://weibo.com/u/1860563805"
+    },
+    {
+      "actor": "Fang Yilun",
+      "role": "Meng Rui — investigator"
+    },
+    {
+      "actor": "Shen Yujie",
+      "role": "Bai Zhenzhu — member of the investigative team"
+    },
+    {
+      "actor": "He Hongshan",
+      "role": "Supporting cast member"
+    },
+    {
+      "actor": "Wang Haixiang",
+      "role": "Supporting cast member"
+    },
+    {
+      "actor": "Ma Wenyuan",
+      "role": "Supporting cast member"
+    }
+  ]
 }

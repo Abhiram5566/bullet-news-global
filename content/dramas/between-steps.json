@@ -9,5 +9,39 @@
   "date": "2026-10-05T00:00:00+05:30",
   "featured": true,
   "genre": "Romance • Youth • Healing",
-  "page": "between-steps.html"
+  "page": "between-steps.html",
+  "nativeTitle": "연애박사",
+  "episodes": "12",
+  "provider": "ENA / Disney+ in selected regions",
+  "providerUrl": "https://www.disneyplus.com/en-me/browse/entity-994e7dec-fcbd-416e-ab2e-b4de8cc6d154",
+  "trailerUrl": "https://www.soompi.com/article/1869135wpp/watch-kim-so-hyun-and-choo-young-woo-fall-in-love-in-teaser-for-new-drama-between-steps",
+  "trailerEmbed": "",
+  "trailerLabel": "Teaser / official preview coverage",
+  "whyFans": [
+    "The university robotics-lab setting gives the romance a different backdrop from a typical office or school series.",
+    "Both leads are rebuilding their plans after life changes, giving their connection an emotional foundation.",
+    "The quieter premise leaves room for naturalistic character growth alongside the romance."
+  ],
+  "review": "Between Steps centres on two people whose plans have changed and who meet while working in a robotics lab. The specialised setting and slow-building relationship could keep it distinctive, while the characters' uncertainty gives the romance emotional stakes. Its success will depend on making their individual growth as engaging as the relationship itself.",
+  "providerNote": "ENA is the Korean broadcaster. Disney+ availability is catalogue- and region-dependent; check your local catalogue.",
+  "castMembers": [
+    {
+      "actor": "Choo Young-woo",
+      "role": "Park Min-jae — former swimmer and robotics PhD student",
+      "instagram": "https://www.instagram.com/cu.young/"
+    },
+    {
+      "actor": "Kim So-hyun",
+      "role": "Im Yoo-jin — graduate student searching for a new direction",
+      "instagram": "https://www.instagram.com/wow_kimsohyun/"
+    },
+    {
+      "actor": "Park Hyuk-kwon",
+      "role": "Supporting cast; character name not confirmed here"
+    },
+    {
+      "actor": "Kim Min-seok",
+      "role": "Supporting cast; character name not confirmed here"
+    }
+  ]
 }
