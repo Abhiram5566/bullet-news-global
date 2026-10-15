@@ -42,7 +42,7 @@ async function mountDramas() {
       ? '<img class="drama-poster" loading="lazy" src="' + esc(posterUrl) + '" alt="' + title + ' poster">'
       : '<div class="drama-poster-placeholder" aria-hidden="true">🎬</div>';
     const genre = esc(item.genre || "");
-    const hasLocalPage = typeof item.page === "string" && /^[a-z0-9-]+\\.html$/i.test(item.page);
+    const hasLocalPage = typeof item.page === "string" && /^[a-z0-9-]+\.html$/i.test(item.page);
     const link = hasLocalPage
       ? '<a class="watch-btn" href="' + esc(item.page) + '">Read More →</a>'
       : '<span class="form-help">Detail page coming soon</span>';
