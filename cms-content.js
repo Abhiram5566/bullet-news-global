@@ -41,12 +41,16 @@ async function mountDramas() {
     const poster = posterUrl
       ? '<img class="drama-poster" loading="lazy" src="' + esc(posterUrl) + '" alt="' + title + ' poster">'
       : '<div class="drama-poster-placeholder" aria-hidden="true">🎬</div>';
-    const linkOk = typeof item.link === "string" && /^https?:\/\//i.test(item.link);
-    const link = linkOk ? '<a class="watch-btn" href="' + esc(item.link) + '" target="_blank" rel="noopener noreferrer">Drama Details ↗</a>' : "";
+    const genre = esc(item.genre || "");
+    const hasLocalPage = typeof item.page === "string" && /^[a-z0-9-]+\\.html$/i.test(item.page);
+    const link = hasLocalPage
+      ? '<a class="watch-btn" href="' + esc(item.page) + '">Read More →</a>'
+      : '<span class="form-help">Detail page coming soon</span>';
     return '<article class="drama-card cms-drama-card">' +
       poster +
       '<p class="drama-meta">' + country + (status ? ' · ' + status : '') + '</p>' +
       '<h3>' + title + '</h3>' +
+      (genre ? '<p class="drama-meta">' + genre + '</p>' : '') +
       (cast ? '<p class="drama-cast"><strong>Cast:</strong> ' + cast + '</p>' : '') +
       (summary ? '<p>' + summary + '</p>' : '') +
       link +

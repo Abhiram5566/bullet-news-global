@@ -1220,3 +1220,25 @@ background:#a60000;
   display: block;
   overflow: visible;
 }
+
+
+/* Local detail pages for CMS drama listings */
+.drama-detail-main { display:block; max-width:1240px; margin:0 auto 40px; padding:0 20px; box-sizing:border-box; }
+.drama-detail-page .drama-detail-layout {
+  display:grid; grid-template-columns:minmax(240px, .8fr) minmax(0, 1.2fr);
+  gap:34px; align-items:start; max-width:1200px; margin:28px auto; padding:0 20px;
+}
+.drama-detail-page .poster-side { position:static; flex:none; width:auto; height:auto; }
+.drama-detail-page .poster { display:block; width:100%; max-width:390px; max-height:620px; height:auto; object-fit:contain; margin:0 auto; }
+.drama-detail-page .details-side { min-width:0; flex:none; width:auto; }
+.drama-detail-page .drama-facts { margin:20px 0; }
+.drama-detail-page .drama-summary { line-height:1.8; font-size:16px; color:#c9d1d9; }
+.drama-detail-page .drama-detail-section { max-width:1160px; }
+.drama-detail-page .drama-detail-section p { line-height:1.8; }
+.drama-detail-page .drama-poster-placeholder { min-height:440px; }
+@media(max-width:760px) {
+  .drama-detail-page .drama-detail-layout { grid-template-columns:1fr; gap:22px; padding:0 15px; }
+  .drama-detail-page .poster { max-width:300px; max-height:480px; }
+  .drama-detail-page .drama-title { font-size:34px; }
+  .drama-detail-main { padding:0 12px; }
+}
