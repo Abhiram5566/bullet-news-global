@@ -13,80 +13,91 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "NewsMediaOrganization",
-        "@id": "https://bulletnewsglobal.in/#organization",
-        "name": "Bullet News Global",
-        "url": "https://bulletnewsglobal.in/",
-        "description": "A digital news and information platform covering global affairs, India, China, Korea, technology, esports and entertainment.",
-        "parentOrganization": {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsMediaOrganization",
+      "@id": "https://bulletnewsglobal.in/#organization",
+      "name": "Bullet News Global",
+      "url": "https://bulletnewsglobal.in/",
+      "description": "A digital news and information platform covering global affairs, India, China, Korea, technology, esports and entertainment.",
+      "parentOrganization": {
+        "@id": "https://bulletnewsglobal.in/#rudra-works"
+      },
+      "founder": {
+        "@id": "https://bulletnewsglobal.in/#abhiram-sinkar"
+      },
+      "employee": {
+        "@id": "https://bulletnewsglobal.in/#affan-ali"
+      },
+      "email": "bulletnewsglobal@gmail.com",
+      "publisher": {
+        "@id": "https://bulletnewsglobal.in/#abhiram-sinkar"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://bulletnewsglobal.in/#rudra-works",
+      "name": "Rudra Works",
+      "description": "A technology and digital ventures initiative operating Bullet News Global."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://bulletnewsglobal.in/#abhiram-sinkar",
+      "name": "Abhiram Sinkar",
+      "url": "https://bulletnewsglobal.in/abhiram-sinkar.html",
+      "description": "CEO of Rudra Works and Founder and Publisher of Bullet News Global. Digital creator and developer working across web development, AI-related tools and digital media.",
+      "jobTitle": "CEO of Rudra Works; Founder and Publisher of Bullet News Global",
+      "worksFor": [
+        {
           "@id": "https://bulletnewsglobal.in/#rudra-works"
         },
-        "founder": {
-          "@id": "https://bulletnewsglobal.in/#abhiram-sinkar"
-        },
-        "employee": {
-          "@id": "https://bulletnewsglobal.in/#affan-ali"
-        },
-        "email": "bulletnewsglobal@gmail.com"
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://bulletnewsglobal.in/#rudra-works",
-        "name": "Rudra Works",
-        "description": "A technology and digital ventures initiative operating Bullet News Global.",
-        "employee": {
-          "@id": "https://bulletnewsglobal.in/#abhiram-sinkar"
-        }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://bulletnewsglobal.in/#abhiram-sinkar",
-        "name": "Abhiram Sinkar",
-        "jobTitle": "CEO of Rudra Works; Founder and Publisher of Bullet News Global",
-        "worksFor": [
-          {
-            "@id": "https://bulletnewsglobal.in/#rudra-works"
-          },
-          {
-            "@id": "https://bulletnewsglobal.in/#organization"
-          }
-        ]
-      },
-      {
-        "@type": "Person",
-        "@id": "https://bulletnewsglobal.in/#affan-ali",
-        "name": "Affan Ali",
-        "jobTitle": "Head of Editorial Department",
-        "worksFor": {
+        {
           "@id": "https://bulletnewsglobal.in/#organization"
         }
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://bulletnewsglobal.in/#website",
-        "url": "https://bulletnewsglobal.in/",
-        "name": "Bullet News Global",
-        "publisher": {
-          "@id": "https://bulletnewsglobal.in/#organization"
-        }
-      },
-      {
-        "@type": "AboutPage",
-        "@id": "https://bulletnewsglobal.in/team.html#webpage",
-        "url": "https://bulletnewsglobal.in/team.html",
-        "name": "Our Team | Bullet News Global",
-        "isPartOf": {
-          "@id": "https://bulletnewsglobal.in/#website"
-        },
-        "about": {
-          "@id": "https://bulletnewsglobal.in/#organization"
-        }
+      ],
+      "sameAs": [
+        "https://github.com/Abhiram5566"
+      ],
+      "knowsAbout": [
+        "Web development",
+        "Digital publishing",
+        "AI-related tools",
+        "Digital media"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://bulletnewsglobal.in/#affan-ali",
+      "name": "Affan Ali",
+      "jobTitle": "Head of Editorial Department",
+      "worksFor": {
+        "@id": "https://bulletnewsglobal.in/#organization"
       }
-    ]
-  }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://bulletnewsglobal.in/#website",
+      "url": "https://bulletnewsglobal.in/",
+      "name": "Bullet News Global",
+      "publisher": {
+        "@id": "https://bulletnewsglobal.in/#organization"
+      }
+    },
+    {
+      "@type": "AboutPage",
+      "@id": "https://bulletnewsglobal.in/team.html#webpage",
+      "url": "https://bulletnewsglobal.in/team.html",
+      "name": "Our Team | Bullet News Global",
+      "isPartOf": {
+        "@id": "https://bulletnewsglobal.in/#website"
+      },
+      "about": {
+        "@id": "https://bulletnewsglobal.in/#organization"
+      }
+    }
+  ]
+}
   </script>
   <style>
     .team-page { max-width: 1100px; margin: 40px auto; padding: 0 22px; display: block; box-sizing: border-box; }
@@ -139,13 +150,14 @@
     <section class="team-grid" aria-label="Bullet News Global leadership team">
       <article class="team-card">
         <div class="team-avatar" aria-hidden="true">AS</div>
-        <h2>Abhiram Sinkar</h2>
+        <h2><a href="abhiram-sinkar.html" style="color:inherit;text-decoration:none;">Abhiram Sinkar</a></h2>
         <p class="team-role">CEO of Rudra Works<br>Founder &amp; Publisher of Bullet News Global</p>
         <p class="team-bio">
           Abhiram Sinkar leads Rudra Works and founded Bullet News Global.
           As BNG's founder and publisher, he is responsible for the publication's
           overall direction and its development as a digital news platform.
         </p>
+        <p style="margin-top:12px;"><a href="abhiram-sinkar.html">View founder profile</a></p>
       </article>
 
       <article class="team-card">
@@ -179,6 +191,7 @@
     <div style="margin-top:14px;font-size:0.85rem;">
       <a href="about.html">About &amp; Editorial Standards</a> •
       <a href="team.html">Our Team</a> •
+      <a href="abhiram-sinkar.html">Founder Profile</a> •
       <a href="articles.html">In-Depth Articles</a> •
       <a href="editorial.html">Editorial Policy</a>
     </div>
