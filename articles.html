@@ -201,6 +201,11 @@
             ? new Date(article.date).toLocaleDateString("en-US", { month: 'short', day: 'numeric', year: 'numeric' })
             : "";
 
+          const authorName = String(article.author || "Bullet News Team").trim();
+          const authorHtml = /^Abhiram Sinkar$/i.test(authorName)
+            ? '<a href="abhiram-sinkar.html">Abhiram Sinkar</a>'
+            : authorName;
+
           card.innerHTML = `
             ${imgHtml}
             <div class="article-card-body">
@@ -208,7 +213,7 @@
               <h3>${article.title || "Untitled"}</h3>
               <p>${article.excerpt || ""}</p>
               <div class="meta">
-                <span>By ${article.author || "Staff"}</span>
+                <span>By ${authorHtml}</span>
                 <span>${dateStr}</span>
               </div>
             </div>
