@@ -257,20 +257,33 @@
         document.title = (article.title || "Article") + " — Bullet News";
 
         // INJECT SCHEMA.ORG NEWSARTICLE JSON-LD
+        const authorName = String(article.author || "Bullet News Team").trim();
+        const isAbhiramByline = /^Abhiram Sinkar$/i.test(authorName);
+        const authorEntity = isAbhiramByline
+          ? {
+              "@type": "Person",
+              "@id": "https://bulletnewsglobal.in/abhiram-sinkar.html#person",
+              "name": "Abhiram Sinkar",
+              "url": "https://bulletnewsglobal.in/abhiram-sinkar.html"
+            }
+          : {
+              "@type": "Organization",
+              "name": authorName,
+              "url": "https://bulletnewsglobal.in/about.html"
+            };
+
         const schema = {
           "@context": "https://schema.org",
           "@type": "NewsArticle",
           "headline": article.title || "",
-          "image": article.image ? [article.image] : [],
-          "datePublished": article.date || new Date().toISOString(),
-          "dateModified": article.date || new Date().toISOString(),
-          "author": [{
-            "@type": "Organization",
-            "name": article.author || "Bullet News Team",
-            "url": "https://bulletnewsglobal.in/about.html"
-          }],
+          "image": article.image ? [new URL(article.image, "https://bulletnewsglobal.in/").href] : [],
+          "datePublished": article.date || undefined,
+          "dateModified": article.date || undefined,
+          "mainEntityOfPage": currentUrl,
+          "author": [authorEntity],
           "publisher": {
             "@type": "NewsMediaOrganization",
+            "@id": "https://bulletnewsglobal.in/#organization",
             "name": "Bullet News Global",
             "url": "https://bulletnewsglobal.in/",
             "parentOrganization": {
