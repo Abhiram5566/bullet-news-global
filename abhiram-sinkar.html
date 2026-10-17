@@ -89,13 +89,16 @@
   </script>
   <style>
     .profile-page { max-width: 1000px; margin: 42px auto; padding: 0 22px; box-sizing: border-box; }
-    .profile-hero { background: linear-gradient(135deg,#161b22,#0d1117); border: 1px solid #30363d; border-radius: 16px; padding: 45px 32px; margin-bottom: 22px; display: grid; grid-template-columns: 92px minmax(0,1fr); gap: 24px; align-items: center; }
-    .profile-avatar { width: 88px; height: 88px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #21262d; border: 2px solid #f97316; color: #f97316; font-size: 30px; font-weight: 800; }
-    .profile-hero h1 { color: #fff; font-size: 38px; line-height: 1.2; margin: 0 0 10px; }
-    .profile-role { color: #f97316; font-weight: 700; line-height: 1.7; margin: 0; }
-    .profile-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 28px; margin-bottom: 18px; }
+    .profile-card { background: linear-gradient(145deg,#161b22,#0f141c); border: 1px solid #30363d; border-radius: 16px; padding: 32px; margin-bottom: 18px; box-sizing: border-box; }
+    .profile-main { padding: 36px; }
+    .profile-main-heading { display: grid; grid-template-columns: 88px minmax(0,1fr); gap: 22px; align-items: center; padding-bottom: 25px; border-bottom: 1px solid #30363d; margin-bottom: 25px; }
+    .profile-avatar { width: 84px; height: 84px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #21262d; border: 2px solid #f97316; color: #f97316; font-size: 29px; font-weight: 800; }
+    .profile-main h1 { color: #fff; font-size: 38px; line-height: 1.2; margin: 0 0 10px; }
+    .profile-role { color: #f97316; font-weight: 700; line-height: 1.65; margin: 0; }
+    .profile-role-secondary { color: #d7dee8; }
+    .profile-bio h2 { color: #fff; margin: 0 0 14px; font-size: 24px; }
     .profile-card h2 { color: #fff; margin: 0 0 14px; font-size: 24px; }
-    .profile-card p { color: #c9d1d9; line-height: 1.85; margin: 0 0 13px; }
+    .profile-card p { color: #c9d1d9; line-height: 1.85; margin: 0 0 16px; }
     .profile-card p:last-child { margin-bottom: 0; }
     .profile-projects { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; margin-top: 18px; }
     .profile-project { background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px; }
@@ -104,7 +107,7 @@
     .profile-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
     .profile-links a { display: inline-block; background: #21262d; border: 1px solid #30363d; border-radius: 8px; padding: 11px 15px; color: #58a6ff; text-decoration: none; font-weight: 600; }
     .profile-links a:hover { border-color: #58a6ff; }
-    @media(max-width:700px) { .profile-page { margin: 24px auto; padding: 0 15px; } .profile-hero { grid-template-columns: 1fr; padding: 28px 22px; gap: 16px; } .profile-hero h1 { font-size: 31px; } .profile-card { padding: 22px; } .profile-projects { grid-template-columns: 1fr; } }
+    @media(max-width:700px) { .profile-page { margin: 24px auto; padding: 0 15px; } .profile-main { padding: 25px 21px; } .profile-main-heading { grid-template-columns: 1fr; gap: 16px; } .profile-main h1 { font-size: 31px; } .profile-card { padding: 22px; } .profile-projects { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -125,44 +128,44 @@
   </header>
 
   <main class="profile-page">
-    <section class="profile-hero">
-      <div class="profile-avatar" aria-hidden="true">AS</div>
-      <div>
-        <h1>Abhiram Sinkar</h1>
-        <p class="profile-role">CEO of Rudra Works<br>Founder &amp; Publisher of Bullet News Global</p>
+    <section class="profile-card profile-main">
+      <div class="profile-main-heading">
+        <div class="profile-avatar" aria-hidden="true">AS</div>
+        <div>
+          <h1>Abhiram Sinkar</h1>
+          <p class="profile-role">CEO of Rudra Works</p>
+          <p class="profile-role profile-role-secondary">Founder &amp; Publisher of Bullet News Global</p>
+        </div>
       </div>
-    </section>
 
-    <section class="profile-card">
-      <h2>About Abhiram Sinkar</h2>
-      <p>
-        Abhiram Sinkar is a digital creator and developer whose work spans web
-        development, AI-related tools and digital media. He is the CEO of Rudra
-        Works and the founder and publisher of Bullet News Global (BNG), a digital
-        news and information platform covering global affairs, India, China, Korea,
-        technology, esports and entertainment.
-      </p>
-      <p>
-        Through Rudra Works, Abhiram develops digital projects and explores
-        practical uses of technology. His work on BNG includes shaping the
-        publication's direction, maintaining its web infrastructure, improving
-        publishing and content-management workflows, and helping make the website's
-        information accessible to readers.
-      </p>
-      <p>
-        BNG publishes news updates, explainers, longer articles and entertainment
-        coverage. As founder and publisher, Abhiram oversees the platform's overall
-        direction; individual stories should be evaluated by their displayed author
-        bylines and the sources included with each article.
-      </p>
-      <p>
-        He is interested in building useful digital products and combining software
-        development with creative publishing. His public project work includes the
-        development and maintenance of BNG's website and publishing systems. This
-        profile connects his work with Bullet News Global and Rudra Works and will
-        be updated as additional public projects and confirmed bylined contributions
-        are documented.
-      </p>
+      <div class="profile-bio">
+        <h2>About Abhiram Sinkar</h2>
+        <p>
+          Abhiram Sinkar is a founder, developer and digital creator with a strong
+          interest in technology, artificial intelligence and digital media. As CEO
+          of Rudra Works and Founder &amp; Publisher of Bullet News Global (BNG), he
+          is dedicated to building digital platforms, exploring new ideas and
+          bringing technology and information together in meaningful ways.
+        </p>
+        <p>
+          Also known as <strong>Rudra Sinkar</strong>, Abhiram has developed his work
+          across web development, AI-related tools and digital publishing. Through
+          Bullet News Global, he has published numerous articles covering a range
+          of topics and established an internship initiative designed to introduce
+          aspiring writers and students to journalism, encourage their writing
+          skills and help them gain practical experience in researching and
+          presenting information.
+        </p>
+        <p>
+          A hardworking and curious individual, Abhiram believes in continuous
+          learning, taking on new challenges and developing his skills through
+          practical experience. Beyond technology and publishing, he has a keen
+          interest in exploring different cultures, learning languages and
+          understanding perspectives from around the world. His ambition is to keep
+          learning, create useful digital projects and build platforms that connect
+          people with knowledge, ideas and opportunities.
+        </p>
+      </div>
     </section>
 
     <section class="profile-card">
@@ -190,11 +193,10 @@
     </section>
 
     <section class="profile-card">
-      <h2>Official Links</h2>
-      <p>Use these links to find the publication and public project profile associated with Abhiram's work.</p>
+      <h2>Official Website</h2>
+      <p>Explore Bullet News Global to learn more about the publication and its work.</p>
       <div class="profile-links">
         <a href="https://bulletnewsglobal.in/">Bullet News Global</a>
-        <a href="https://github.com/Abhiram5566" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
       </div>
     </section>
   </main>
