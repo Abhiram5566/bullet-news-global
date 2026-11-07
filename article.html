@@ -283,7 +283,7 @@
 
         // INJECT SCHEMA.ORG NEWSARTICLE JSON-LD
         const isAbhiramByline = /^Abhiram Sinkar$/i.test(authorName);
-        const isRudraByline = /^(Mr\\.?\\s*)?Rudra Sinkar$/i.test(authorName);
+        const isRudraByline = /^(Mr\.?\s*)?Rudra Sinkar$/i.test(authorName);
         const authorEntity = (isAbhiramByline || isRudraByline)
           ? {
               "@type": "Person",
