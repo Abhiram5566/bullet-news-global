@@ -88,7 +88,9 @@
     .author-name {
       color: #f3f4f6;
       font-weight: 600;
+      text-decoration: none;
     }
+    .author-name:hover { color: var(--accent-blue, #38bdf8); text-decoration: underline; }
     .share-group {
       margin-left: auto;
       display: flex;
@@ -204,6 +206,10 @@
       return params.get("slug");
     }
 
+    const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, ch => ({
+      "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+    }[ch]));
+
     async function loadArticle() {
       const statusEl = document.getElementById("status");
       const contentEl = document.getElementById("article-content");
@@ -227,20 +233,33 @@
         const dateStr = article.date
           ? new Date(article.date).toLocaleDateString("en-US", { month: 'long', day: 'numeric', year: 'numeric' })
           : "";
+        const canonicalUrl = `https://bulletnewsglobal.in/article.html?slug=${encodeURIComponent(slug)}`;
+        const canonicalEl = document.querySelector('link[rel="canonical"]');
+        if (canonicalEl) canonicalEl.href = canonicalUrl;
+        const descriptionEl = document.querySelector('meta[name="description"]');
+        if (descriptionEl && article.excerpt) descriptionEl.content = article.excerpt;
+        const authorName = String(article.author || "Bullet News Team").trim();
+        const authorSafe = escapeHtml(authorName);
+        const authorHref = article.authorUrl
+          ? new URL(article.authorUrl, "https://bulletnewsglobal.in/").href
+          : "";
+        const authorMarkup = authorHref
+          ? `<a class="author-name" href="${escapeHtml(authorHref)}">${authorSafe}</a>`
+          : `<span class="author-name">${authorSafe}</span>`;
 
         const coverHtml = article.image
           ? `<img class="cover" src="${article.image}" alt="${article.title || ''}">`
           : "";
 
         const bodyHtml = window.marked ? marked.parse(article.body || "") : (article.body || "");
-        const currentUrl = window.location.href;
+        const currentUrl = canonicalUrl;
 
         contentEl.innerHTML = `
           ${coverHtml}
           <div class="article-category">${article.category || "ANALYSIS"}</div>
           <h1>${article.title || "Untitled"}</h1>
           <div class="article-meta">
-            <span>By <span class="author-name">${article.author || "Bullet News Team"}</span></span>
+            <span>By ${authorMarkup}</span>
             <span>•</span>
             <span>${dateStr}</span>
             <div class="share-group">
@@ -255,15 +274,22 @@
         `;
 
         document.title = (article.title || "Article") + " — Bullet News";
+        const ogTitle = document.querySelector('meta[property="og:title"]') || document.head.appendChild(Object.assign(document.createElement("meta"), { property: "og:title" }));
+        ogTitle.content = article.title || "Bullet News Global";
+        const ogDescription = document.querySelector('meta[property="og:description"]') || document.head.appendChild(Object.assign(document.createElement("meta"), { property: "og:description" }));
+        ogDescription.content = article.excerpt || "";
+        const ogUrl = document.querySelector('meta[property="og:url"]') || document.head.appendChild(Object.assign(document.createElement("meta"), { property: "og:url" }));
+        ogUrl.content = canonicalUrl;
 
         // INJECT SCHEMA.ORG NEWSARTICLE JSON-LD
-        const authorName = String(article.author || "Bullet News Team").trim();
         const isAbhiramByline = /^Abhiram Sinkar$/i.test(authorName);
-        const authorEntity = isAbhiramByline
+        const isRudraByline = /^(Mr\\.?\\s*)?Rudra Sinkar$/i.test(authorName);
+        const authorEntity = (isAbhiramByline || isRudraByline)
           ? {
               "@type": "Person",
-              "@id": "https://bulletnewsglobal.in/abhiram-sinkar.html#person",
+              "@id": "https://bulletnewsglobal.in/#abhiram-sinkar",
               "name": "Abhiram Sinkar",
+              "alternateName": "Rudra Sinkar",
               "url": "https://bulletnewsglobal.in/abhiram-sinkar.html"
             }
           : {
