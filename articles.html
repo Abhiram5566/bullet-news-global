@@ -92,6 +92,10 @@
       display: flex;
       justify-content: space-between;
     }
+    .article-flags { display:flex; flex-wrap:wrap; gap:7px; margin:0 0 10px; }
+    .article-flag { display:inline-flex; align-items:center; padding:4px 8px; border-radius:999px; font-size:10px; font-weight:800; letter-spacing:.55px; text-transform:uppercase; }
+    .article-flag--hot { color:#fecaca; background:rgba(185,28,28,.18); border:1px solid rgba(248,113,113,.38); }
+    .article-flag--trending { color:#fde68a; background:rgba(180,83,9,.18); border:1px solid rgba(251,191,36,.35); }
     #status { text-align: center; padding: 60px 20px; color: #9ca3af; font-size: 15px; }
   </style>
 <link rel="canonical" href="https://bulletnewsglobal.in/articles.html">
@@ -153,6 +157,9 @@
     // ============================
 
     const apiListUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${ARTICLES_PATH}?ref=${GITHUB_BRANCH}`;
+    const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, ch => ({
+      "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+    }[ch]));
 
     async function loadArticles() {
       const statusEl = document.getElementById("status");
@@ -183,8 +190,12 @@
 
         // Sort newest first
         const validArticles = articles
-          .filter(a => a !== null)
-          .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+          .filter(a => a !== null && a.published !== false)
+          .sort((a, b) =>
+            Number(Boolean(b.hot)) - Number(Boolean(a.hot)) ||
+            Number(Boolean(b.trending)) - Number(Boolean(a.trending)) ||
+            new Date(b.date || 0) - new Date(a.date || 0)
+          );
 
         statusEl.style.display = "none";
 
@@ -193,27 +204,31 @@
           card.className = "article-card";
           card.href = `article.html?slug=${encodeURIComponent(article.__slug)}`;
 
+          const safeTitle = escapeHtml(article.title || "Untitled");
           const imgHtml = article.image
-            ? `<img src="${article.image}" alt="${article.title || ''}">`
+            ? `<img src="${escapeHtml(article.image)}" alt="${safeTitle}">`
             : `<div style="height:180px; background:#1e293b; display:flex; align-items:center; justify-content:center; color:#888;">📰 Bullet News</div>`;
 
           const dateStr = article.date
             ? new Date(article.date).toLocaleDateString("en-US", { month: 'short', day: 'numeric', year: 'numeric' })
             : "";
+          const badges = [
+            article.hot ? '<span class="article-flag article-flag--hot">🔥 HOT</span>' : "",
+            article.trending ? '<span class="article-flag article-flag--trending">↗ TRENDING</span>' : ""
+          ].filter(Boolean).join("");
+          const badgeHtml = badges ? `<div class="article-flags">${badges}</div>` : "";
 
-          const authorName = String(article.author || "Bullet News Team").trim();
-          const authorHtml = /^Abhiram Sinkar$/i.test(authorName)
-            ? '<a href="abhiram-sinkar.html">Abhiram Sinkar</a>'
-            : authorName;
+          const authorName = escapeHtml(String(article.author || "Bullet News Team").trim());
 
           card.innerHTML = `
             ${imgHtml}
             <div class="article-card-body">
-              <div class="article-card-category">${article.category || "ANALYSIS"}</div>
-              <h3>${article.title || "Untitled"}</h3>
-              <p>${article.excerpt || ""}</p>
+              ${badgeHtml}
+              <div class="article-card-category">${escapeHtml(article.category || "ANALYSIS")}</div>
+              <h3>${safeTitle}</h3>
+              <p>${escapeHtml(article.excerpt || "")}</p>
               <div class="meta">
-                <span>By ${authorHtml}</span>
+                <span>By ${authorName}</span>
                 <span>${dateStr}</span>
               </div>
             </div>
