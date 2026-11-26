@@ -1,9 +1,10 @@
 {
-  "icon": "🌍",
+  "icon": "🇮🇳",
   "isBreaking": true,
   "showInTicker": true,
-  "title": "Russian Strike Near Poland Border Raises Fresh Concerns as War Intensifies",
-  "category": "Global",
-  "date": "2026-09-13T18:05:00.000+05:30",
-  "summary": "A Russian strike hit a truck near Ukraine's border with Poland, temporarily disrupting the Dorohusk-Yahodyn crossing. The location is close to NATO territory, making it a significant development. Reuters also reports that India and China have offered to help broker a peace settlement."
+  "title": "Indian Rupee Slips as Higher Oil Prices Add Pressure",
+  "category": "India",
+  "summary": "The Indian rupee weakened as higher crude oil prices increased pressure on the country's import bill. Investors are also watching trade developments and the outlook for global markets.",
+  "date": "2026-11-26T11:00:00+05:30",
+  "link": "https://www.reuters.com/world/india/rupee-dip-oil-rise-ai-trade-finding-tentative-footing-2026-11-26/"
 }
