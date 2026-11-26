@@ -1,10 +1,10 @@
 {
-  "title": "US Stocks Slide as Higher Inflation Pressures Markets",
+  "title": "US Tariff Proposals and AI Concerns Shake Global Markets",
   "category": "Markets",
   "icon": "📉",
-  "date": "2026-10-14T00:00:00+05:30",
-  "isBreaking": false,
+  "date": "2026-11-26T10:00:00+05:30",
+  "isBreaking": true,
   "published": true,
-  "summary": "US stocks fell on October 14 after September consumer prices rose 3.7% from a year earlier, above expectations. Rising bond yields and concern about the path of interest rates weighed on shares, including technology companies.",
-  "link": "https://apnews.com/article/704d3190f0fba2908df07c85f26346ec"
+  "summary": "Global investors are facing renewed volatility as new US tariff proposals add trade uncertainty while concerns about high AI valuations weigh on technology stocks. Reuters reported that the Nasdaq fell sharply on Wednesday before recovering some ground.",
+  "link": "https://www.reuters.com/business/global-markets-risks-analysis-graphic-pix-2026-11-25/"
 }
