@@ -1,10 +1,10 @@
 {
-  "title": "UN Warns Fertilizer Shipping Disruptions Could Raise Food-Security Risks",
-  "category": "World Affairs",
-  "icon": "🌾",
-  "date": "2026-10-14T00:00:00+05:30",
-  "isBreaking": false,
+  "title": "US Proposes New Tariffs on India, China and Other Trading Partners",
+  "category": "Global Trade",
+  "icon": "🌐",
+  "date": "2026-11-26T09:00:00+05:30",
+  "isBreaking": true,
   "published": true,
-  "summary": "A UN official urged the United States and Iran to agree on a plan for moving fertilizer shipments through the Strait of Hormuz. The proposed UN-backed mechanism would coordinate monitored shipments through Oman as disruptions threaten supplies important to agriculture in Asia and Africa.",
-  "link": "https://www.reuters.com/world/middle-east/failure-activate-hormuz-fertilizer-plan-could-trigger-food-crisis-un-official-2026-10-14/"
+  "summary": "The United States has proposed new tariffs on goods from 14 trading partners, including India and China. Reuters reported that the measures follow an eight-month Section 301 investigation into alleged unfair trade practices and excess industrial capacity.",
+  "link": "https://www.reuters.com/world/us/us-proposes-new-tariffs-14-trading-partners-including-india-china-2026-11-25/"
 }
