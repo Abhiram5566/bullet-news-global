@@ -170,8 +170,80 @@ async function mountNewsDesk(id, folder, defaultIcon, deskName) {
   }).join("");
 }
 
-mountNewsDesk("news-feed-container", "content/world-news", "🌍", "World");
+mountNewsDesk("news-feed-container", "content/news", "🌍", "World");
 mountNewsDesk("cms-china-news", "content/china-news", "🇨🇳", "China");
 mountNewsDesk("cms-korea-news", "content/korea-news", "🇰🇷", "Korea");
 mountIndiaSections();
+
+async function mountHomepageEnhancements() {
+  const breakingEl = document.getElementById("breaking-track");
+  const featuredEl = document.getElementById("homepage-featured");
+  const trendingEl = document.getElementById("homepage-trending");
+  const mostReadEl = document.getElementById("homepage-most-read");
+
+  if (!breakingEl && !featuredEl && !trendingEl && !mostReadEl) return;
+
+  const data = (await getFolder("content/news"))
+    .filter(item => item.published !== false)
+    .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+  if (!data.length) {
+    if (breakingEl) breakingEl.innerHTML = "<span>No breaking dispatches are currently available.</span>";
+    if (featuredEl) featuredEl.querySelector("#featured-title").textContent = "No featured story available";
+    return;
+  }
+
+  const title = item => esc(item.title || "Untitled story");
+  const summary = item => esc(item.summary || "");
+  const date = item => esc(dateLabel(item.date));
+  const category = item => esc(item.category || "World");
+
+  const breaking = data.filter(item => item.isBreaking || item.showInTicker).slice(0, 8);
+  if (breakingEl) {
+    breakingEl.innerHTML = (breaking.length ? breaking : data.slice(0, 5))
+      .map(item => '<span class="breaking-item">' + title(item) + '</span>')
+      .join('<span class="breaking-separator">•</span>');
+  }
+
+  const featured = data.find(item => item.featured === true) ||
+                   data.find(item => item.isBreaking === true) ||
+                   data[0];
+
+  if (featuredEl) {
+    const image = typeof featured.image === "string" && (/^https?:\\/\\//i.test(featured.image) || featured.image.startsWith("/"))
+      ? featured.image : "";
+    const imageWrap = featuredEl.querySelector(".featured-image-wrap");
+    if (imageWrap && image) {
+      imageWrap.innerHTML = '<img loading="lazy" src="' + esc(image) + '" alt="' + title(featured) + '">';
+    }
+    const titleEl = featuredEl.querySelector("#featured-title");
+    const summaryEl = featuredEl.querySelector("#featured-summary");
+    const metaEl = featuredEl.querySelector("#featured-meta");
+    if (titleEl) titleEl.textContent = featured.title || "Featured story";
+    if (summaryEl) summaryEl.textContent = featured.summary || "";
+    if (metaEl) metaEl.textContent = [featured.category || "World", date(featured)].filter(Boolean).join(" • ");
+  }
+
+  const renderList = (items) => items.map((item, index) => {
+    const link = typeof item.link === "string" && /^https?:\\/\\//i.test(item.link)
+      ? ' href="' + esc(item.link) + '" target="_blank" rel="noopener noreferrer"'
+      : "";
+    return '<a class="homepage-story-item"' + link + '>' +
+      '<span class="homepage-story-rank">' + (index + 1) + '</span>' +
+      '<span class="homepage-story-copy"><strong>' + title(item) + '</strong><small>' + category(item) + (date(item) ? ' • ' + date(item) : '') + '</small></span>' +
+      '</a>';
+  }).join("");
+
+  const trending = data.filter(item => item.trending || item.isBreaking || item.showInTicker).slice(0, 5);
+  if (trendingEl) trendingEl.innerHTML = renderList(trending.length ? trending : data.slice(0, 5));
+
+  const withViews = data.filter(item => Number.isFinite(Number(item.views)));
+  const mostRead = withViews.length
+    ? [...withViews].sort((a, b) => Number(b.views) - Number(a.views)).slice(0, 5)
+    : data.filter(item => item.hot || item.trending || item.isBreaking).slice(0, 5);
+
+  if (mostReadEl) mostReadEl.innerHTML = renderList(mostRead.length ? mostRead : data.slice(0, 5));
+}
+
+mountHomepageEnhancements();
 })();
